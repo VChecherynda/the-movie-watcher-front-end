@@ -12,7 +12,7 @@ const Router = () => (
     <Switch>
       <Route path="/" component={List} exact />
       <Route path="/create" component={Create} />
-      <Route path="/movie" component={Movie} />
+      <Route path="/movie/:id" component={Movie} />
       <Redirect from="*" to="/" />
     </Switch>
   </BrowserRouter>

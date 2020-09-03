@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { fetchMovies } from "./middleware";
+import { fetchMovies, fetchMovieCurrent } from "./middleware";
 
 const initialState = {
   status: "idle",
   entities: [],
+  current: {},
   error: ""
 };
 
@@ -16,16 +17,29 @@ export const moviesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchMovies.pending]: (state, action) => {
+    [fetchMovies.pending]: state => {
       state.status = "loading";
+      state.error = "";
     },
     [fetchMovies.fulfilled]: (state, action) => {
-      console.log("[fulfilled]");
-
       state.status = "succeeded";
-      state.entities = state.entities.concat(action.payload);
+      state.error = "";
+      state.entities = action.payload;
     },
     [fetchMovies.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.error.message;
+    },
+    [fetchMovieCurrent.pending]: state => {
+      state.status = "loading";
+      state.error = "";
+    },
+    [fetchMovieCurrent.fulfilled]: (state, action) => {
+      state.status = "succeeded";
+      state.error = "";
+      state.current = action.payload;
+    },
+    [fetchMovieCurrent.rejected]: (state, action) => {
       state.status = "failed";
       state.error = action.error.message;
     }

@@ -9,7 +9,7 @@ const CardComponent = ({ movie }) => (
     <Card.Body>
       <Card.Title>{movie.title}</Card.Title>
 
-      <Link to="/movie" className="mr-2">
+      <Link to={`/movie/${movie.id}`} className="mr-2">
         <Button variant="primary">Show</Button>
       </Link>
 

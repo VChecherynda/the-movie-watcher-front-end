@@ -6,3 +6,12 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
 
   return response;
 });
+
+export const fetchMovieCurrent = createAsyncThunk(
+  "movies/fetchMovieCurrent",
+  async id => {
+    const response = await client.get(`movies/find/${id}`);
+
+    return response;
+  }
+);

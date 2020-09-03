@@ -23,10 +23,6 @@ module.exports = {
   entry: {
     main: ["@babel/polyfill", "./index"]
   },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].[hash].js"
-  },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".png"],
     alias: {
