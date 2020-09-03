@@ -5,6 +5,7 @@ const movie = Yup.object({
   release: Yup.number()
     .typeError("Should be a number")
     .positive("Should be a positive number")
+    .min(1900)
     .required(),
   format: Yup.string().required(),
   stars: Yup.string().required()
