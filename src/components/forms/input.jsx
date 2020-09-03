@@ -13,7 +13,11 @@ const Input = ({ id, title, value, touched, error, name, changed, blured }) => {
         onChange={changed}
         onBlur={blured}
         isValid={touched && !error}
+        isInvalid={touched && error}
       />
+      <Form.Control.Feedback type="invalid" tooltip>
+        {error}
+      </Form.Control.Feedback>
     </Form.Group>
   );
 };

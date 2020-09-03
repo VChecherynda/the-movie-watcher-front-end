@@ -4,18 +4,25 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-const CardComponent = ({ movie }) => (
+import withHooks from "./withHooks";
+
+const CardComponent = ({
+  movie: { id = "", title = "" } = {},
+  handleDeleteMovie
+}) => (
   <Card>
     <Card.Body>
-      <Card.Title>{movie.title}</Card.Title>
+      <Card.Title>{title}</Card.Title>
 
-      <Link to={`/movie/${movie.id}`} className="mr-2">
+      <Link to={`/movie/${id}`} className="mr-2">
         <Button variant="primary">Show</Button>
       </Link>
 
-      <Button variant="danger">Delete</Button>
+      <Button variant="danger" type="button" onClick={handleDeleteMovie}>
+        Delete
+      </Button>
     </Card.Body>
   </Card>
 );
 
-export default CardComponent;
+export default withHooks(CardComponent);

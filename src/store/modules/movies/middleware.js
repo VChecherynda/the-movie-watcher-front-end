@@ -15,3 +15,18 @@ export const fetchMovieCurrent = createAsyncThunk(
     return response;
   }
 );
+
+export const createMovie = createAsyncThunk(
+  "movies/createMovie",
+  async payload => {
+    const response = await client.post("movies/create", payload);
+
+    return response;
+  }
+);
+
+export const deleteMovie = createAsyncThunk("movies/deleteMovie", async id => {
+  const response = await client.del(`movies/delete/${id}`);
+
+  return response;
+});

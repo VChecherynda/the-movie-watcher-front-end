@@ -22,14 +22,6 @@ const withHooks = WrappedComponent => {
     return <WrappedComponent movieCurrent={movieCurrent} {...rest} />;
   };
 
-  // Wrapped.defaultProps = {
-  //   isLoading: false
-  // };
-
-  // Wrapped.propTypes = {
-  //   isLoading: bool
-  // };
-
   return Wrapped;
 };
 
