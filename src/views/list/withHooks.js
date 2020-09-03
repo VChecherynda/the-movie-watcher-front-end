@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
 import { selectMovies } from "@store/modules/movies/selectors";
 import { fetchMovies } from "@store/modules/movies/middleware";
 
@@ -11,6 +12,11 @@ const withHooks = WrappedComponent => {
 
     useEffect(() => {
       dispatch(fetchMovies());
+
+      return () => {
+        dispatch(clearStatus());
+        dispatch(clearRedirectTo());
+      };
     }, [dispatch]);
 
     return <WrappedComponent movies={movies} {...props} />;

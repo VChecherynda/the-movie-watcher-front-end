@@ -10,7 +10,9 @@ import Input from "@components/forms/input";
 import schemaMovie from "@validations/movie";
 import { initialData, formInputs } from "@configs/movie";
 
-const Create = () => {
+import withHooks from "./withHooks";
+
+const Create = ({ handleCreate }) => {
   return (
     <>
       <Header />
@@ -28,7 +30,7 @@ const Create = () => {
           <Col>
             <Formik
               validationSchema={schemaMovie}
-              onSubmit={console.log}
+              onSubmit={handleCreate}
               initialValues={initialData}
             >
               {({
@@ -69,4 +71,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default withHooks(Create);

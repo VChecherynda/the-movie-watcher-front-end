@@ -8,46 +8,40 @@ const get = url =>
   instance
     .get(url)
     .then(function (response) {
-      return response.data;
+      return response;
     })
     .catch(function (error) {
-      return error;
+      throw error;
     });
 
 const post = (url, payload) =>
   instance
-    .post(url, {
-      headers: { "Content-Type": "application/json" },
-      data: { ...payload }
-    })
+    .post(url, payload)
     .then(function (response) {
-      return response.data;
+      return response;
     })
     .catch(function (error) {
-      return error;
+      throw error;
     });
 
 const put = (url, payload) =>
   instance
-    .put(url, {
-      headers: { "Content-Type": "application/json" },
-      data: { ...payload }
-    })
+    .put(url, payload)
     .then(function (response) {
-      return response.data;
+      return response;
     })
     .catch(function (error) {
-      return error;
+      throw error;
     });
 
 const del = (url, payload) =>
   instance
     .delete(url)
     .then(function (response) {
-      return response.data;
+      return response;
     })
     .catch(function (error) {
-      return error;
+      throw error;
     });
 
 export default {

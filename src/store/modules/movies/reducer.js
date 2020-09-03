@@ -11,6 +11,7 @@ const initialState = {
   status: "idle",
   entities: [],
   current: {},
+  redirectTo: "",
   error: ""
 };
 
@@ -20,7 +21,17 @@ const initialState = {
 export const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {},
+  reducers: {
+    clearError: state => {
+      state.error = "";
+    },
+    clearStatus: state => {
+      state.status = "";
+    },
+    clearRedirectTo: state => {
+      state.redirectTo = "";
+    }
+  },
   extraReducers: {
     [fetchMovies.pending]: state => {
       state.status = "loading";
@@ -33,7 +44,7 @@ export const moviesSlice = createSlice({
     },
     [fetchMovies.rejected]: (state, action) => {
       state.status = "failed";
-      state.error = action.error.message;
+      state.error = action.payload;
     },
     [fetchMovieCurrent.pending]: state => {
       state.status = "loading";
@@ -46,7 +57,7 @@ export const moviesSlice = createSlice({
     },
     [fetchMovieCurrent.rejected]: (state, action) => {
       state.status = "failed";
-      state.error = action.error.message;
+      state.error = action.payload;
     },
     [createMovie.pending]: state => {
       state.status = "loading";
@@ -54,12 +65,13 @@ export const moviesSlice = createSlice({
     },
     [createMovie.fulfilled]: (state, action) => {
       state.status = "succeeded";
+      state.redirectTo = "/";
       state.error = "";
       state.entities = state.entities.concat(action.payload);
     },
     [createMovie.rejected]: (state, action) => {
       state.status = "failed";
-      state.error = action.error.message;
+      state.error = action.payload;
     },
     [deleteMovie.pending]: state => {
       state.status = "loading";
@@ -68,15 +80,17 @@ export const moviesSlice = createSlice({
     [deleteMovie.fulfilled]: (state, action) => {
       state.status = "succeeded";
       state.error = "";
-      state.current = action.payload;
+      state.entities = state.entities.filter(
+        entity => entity.id !== action.payload.id
+      );
     },
     [deleteMovie.rejected]: (state, action) => {
       state.status = "failed";
-      state.error = action.error.message;
+      state.error = action.payload;
     }
   }
 });
 
-export const { fetch, fetchResponse, fetchError } = moviesSlice.actions;
+export const { clearError, clearStatus, clearRedirectTo } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

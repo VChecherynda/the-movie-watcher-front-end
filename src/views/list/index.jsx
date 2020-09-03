@@ -27,7 +27,7 @@ const List = ({ movies }) => (
 
       <Row className="mb-4">
         {movies.map(movie => (
-          <Col key={movie.id} sm={4}>
+          <Col key={movie?.id} sm={4}>
             <Card movie={movie} />
           </Col>
         ))}
