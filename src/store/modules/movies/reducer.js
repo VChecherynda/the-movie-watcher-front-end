@@ -4,7 +4,8 @@ import {
   fetchMovies,
   fetchMovieCurrent,
   createMovie,
-  deleteMovie
+  deleteMovie,
+  uploadMovieList
 } from "./middleware";
 
 const initialState = {

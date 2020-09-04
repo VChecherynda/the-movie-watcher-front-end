@@ -13,7 +13,7 @@ const withHooks = WrappedComponent => {
       if (inputRef.current) {
         inputRef.current.accept = ".txt";
       }
-    }, [inputRef.current]);
+    }, []);
 
     const changed = e => {
       setListLabel(e.target.files[0].name);

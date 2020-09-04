@@ -1,26 +1,29 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import client from "@/api/client";
 
-export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
-  try {
-    const response = await client.get("movies/find/");
-    return response.data;
-  } catch (e) {
-    if (!err.response) {
-      throw err;
-    }
+export const fetchMovies = createAsyncThunk(
+  "movies/fetchMovies",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await client.get("movies/find/");
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
 
-    return rejectWithValue(err.response.data);
+      return rejectWithValue(err.response.data);
+    }
   }
-});
+);
 
 export const fetchMovieCurrent = createAsyncThunk(
   "movies/fetchMovieCurrent",
-  async id => {
+  async (id, { rejectWithValue }) => {
     try {
       const response = await client.get(`movies/find/${id}`);
       return response.data;
-    } catch (e) {
+    } catch (err) {
       if (!err.response) {
         throw err;
       }
