@@ -18,7 +18,7 @@ const Search = ({ changed }) => (
           </InputGroup.Prepend>
 
           <FormControl
-            id="inlineFormInputGroupUsername2"
+            id="searchTitleOrActor"
             placeholder="Enter Film title or Actor name"
             onChange={changed}
           />
