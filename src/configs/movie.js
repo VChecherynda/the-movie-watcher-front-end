@@ -1,8 +1,8 @@
 export const initialData = {
-  title: "asdas",
-  release: "11",
-  format: "asd",
-  stars: "asd"
+  title: "Some Title",
+  release: "1976",
+  format: "VHS",
+  stars: "Jorge,"
 };
 
 export const formInputs = [

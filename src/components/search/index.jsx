@@ -1,31 +1,31 @@
 import React from "react";
 
-import { Form, FormControl, InputGroup, Button, Col} from 'react-bootstrap';
+import { Form, FormControl, InputGroup, Col } from "react-bootstrap";
 
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch } from "react-icons/fa";
 
-const Search = () => (
+import withHooks from "./withHooks";
+
+const Search = ({ changed }) => (
   <Form>
     <Form.Row>
-      <Col sm={10}>
+      <Col sm={12}>
         <InputGroup className="mb-2">
           <InputGroup.Prepend>
             <InputGroup.Text>
-              <FaSearch/>
+              <FaSearch />
             </InputGroup.Text>
           </InputGroup.Prepend>
 
-          <FormControl id="inlineFormInputGroupUsername2" placeholder="Enter Film title or Actor name" />
+          <FormControl
+            id="inlineFormInputGroupUsername2"
+            placeholder="Enter Film title or Actor name"
+            onChange={changed}
+          />
         </InputGroup>
-      </Col>
-
-      <Col sm={2}>
-        <Button type="submit" className="mb-2" block>
-          Search
-        </Button>
       </Col>
     </Form.Row>
   </Form>
-)
+);
 
-export default Search;
+export default withHooks(Search);

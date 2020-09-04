@@ -7,15 +7,17 @@ import Button from "react-bootstrap/Button";
 import withHooks from "./withHooks";
 
 const CardComponent = ({
-  movie: { id = "", title = "" } = {},
+  movie: { id = "", title = "", stars = "" } = {},
   handleDeleteMovie
 }) => (
   <Card>
     <Card.Body>
-      <Card.Title>{title}</Card.Title>
+      <Card.Title>Title: {title}</Card.Title>
+
+      <Card.Title>Stars: {stars}</Card.Title>
 
       <Link to={`/movie/${id}`} className="mr-2">
-        <Button variant="primary">Show</Button>
+        <Button variant="primary">Details</Button>
       </Link>
 
       <Button variant="danger" type="button" onClick={handleDeleteMovie}>

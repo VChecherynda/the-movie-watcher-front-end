@@ -29,7 +29,7 @@ const withHooks = WrappedComponent => {
         dispatch(clearStatus());
         dispatch(clearRedirectTo());
       };
-    }, [redirectTo]);
+    }, [dispatch, history, redirectTo]);
 
     return <WrappedComponent handleCreate={handleCreate} {...props} />;
   };

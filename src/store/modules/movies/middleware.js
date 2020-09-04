@@ -1,4 +1,4 @@
-import { createAsyncThunk, unwrapResult } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import client from "@/api/client";
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
@@ -21,17 +21,15 @@ export const createMovie = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await client.post("movies/create", payload);
-
-      const result = unwrapResult(response.response);
-
-      console.log("[response]", response);
-      console.log("[result]", result);
-
       return response.data;
     } catch (err) {
+      console.log(err);
+
       if (!err.response) {
         throw err;
       }
+
+      console.log("[err]", err);
 
       return rejectWithValue(err.response.data);
     }

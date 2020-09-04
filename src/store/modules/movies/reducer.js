@@ -9,6 +9,7 @@ import {
 
 const initialState = {
   status: "idle",
+  searchWord: "",
   entities: [],
   current: {},
   redirectTo: "",
@@ -22,6 +23,9 @@ export const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
+    saveSearchWord: (state, action) => {
+      state.searchWord = action.payload;
+    },
     clearError: state => {
       state.error = "";
     },
@@ -91,6 +95,12 @@ export const moviesSlice = createSlice({
   }
 });
 
-export const { clearError, clearStatus, clearRedirectTo } = moviesSlice.actions;
+export const {
+  saveMovies,
+  saveSearchWord,
+  clearError,
+  clearStatus,
+  clearRedirectTo
+} = moviesSlice.actions;
 
 export default moviesSlice.reducer;

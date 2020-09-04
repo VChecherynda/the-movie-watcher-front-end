@@ -34,7 +34,7 @@ const put = (url, payload) =>
       throw error;
     });
 
-const del = (url, payload) =>
+const del = url =>
   instance
     .delete(url)
     .then(function (response) {

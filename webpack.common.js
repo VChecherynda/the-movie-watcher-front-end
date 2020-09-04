@@ -31,6 +31,7 @@ module.exports = {
       "@configs": path.resolve(__dirname, "src/configs"),
       "@views": path.resolve(__dirname, "src/views"),
       "@store": path.resolve(__dirname, "src/store"),
+      "@helpers": path.resolve(__dirname, "src/helpers"),
       "@": path.resolve(__dirname, "src")
     }
   },
