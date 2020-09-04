@@ -4,9 +4,9 @@ const instance = axios.create({
   baseURL: process.env.API
 });
 
-const get = url =>
+const get = (url, config) =>
   instance
-    .get(url)
+    .get(url, config)
     .then(function (response) {
       return response;
     })
@@ -14,9 +14,9 @@ const get = url =>
       throw error;
     });
 
-const post = (url, payload) =>
+const post = (url, payload, config) =>
   instance
-    .post(url, payload)
+    .post(url, payload, config)
     .then(function (response) {
       return response;
     })
@@ -24,9 +24,9 @@ const post = (url, payload) =>
       throw error;
     });
 
-const put = (url, payload) =>
+const put = (url, payload, config) =>
   instance
-    .put(url, payload)
+    .put(url, payload, config)
     .then(function (response) {
       return response;
     })
@@ -34,19 +34,27 @@ const put = (url, payload) =>
       throw error;
     });
 
-const del = url =>
+const del = (url, config) =>
   instance
-    .delete(url)
+    .delete(url, config)
     .then(function (response) {
       return response;
     })
     .catch(function (error) {
       throw error;
     });
+
+const upload = (url, payload) =>
+  post(url, payload, {
+    headers: {
+      "content-type": "multipart/form-data"
+    }
+  });
 
 export default {
   get,
   post,
   put,
-  del
+  del,
+  upload
 };

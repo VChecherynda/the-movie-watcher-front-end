@@ -91,6 +91,19 @@ export const moviesSlice = createSlice({
     [deleteMovie.rejected]: (state, action) => {
       state.status = "failed";
       state.error = action.payload;
+    },
+    [uploadMovieList.pending]: state => {
+      state.status = "loading";
+      state.error = "";
+    },
+    [uploadMovieList.fulfilled]: (state, action) => {
+      state.status = "succeeded";
+      state.error = "";
+      state.entities = action.payload;
+    },
+    [uploadMovieList.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.payload;
     }
   }
 });

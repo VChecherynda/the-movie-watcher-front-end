@@ -7,8 +7,8 @@ import Col from "react-bootstrap/Col";
 
 import withHooks from "./withHooks";
 
-const Add = ({ changed, inputRef, listLabel }) => (
-  <Form>
+const Add = ({ changed, upload, inputRef, listLabel }) => (
+  <Form onSubmit={upload}>
     <Form.Row>
       <Col sm={8}>
         <Form.File id="addMovieList" custom>
