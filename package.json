@@ -4,8 +4,8 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --open",
-    "build": "webpack --config webpack.prod.js",
+    "start": "NODE_ENV=development webpack-dev-server --config webpack.dev.js --open",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "stats": "webpack --config webpack.prod.js --json > stats.json && webpack-bundle-analyzer stats.json"
   },
   "browserslist": "> 0.25%, not dead",
@@ -45,6 +45,8 @@
     "@reduxjs/toolkit": "^1.4.0",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "dotenv": "^8.2.0",
+    "dotenv-flow": "^3.2.0",
     "dotenv-webpack": "^2.0.0",
     "eslint": "^7.5.0",
     "eslint-loader": "^4.0.2",

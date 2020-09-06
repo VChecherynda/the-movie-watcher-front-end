@@ -1,9 +1,13 @@
 const path = require("path");
+const webpack = require("webpack");
+require("dotenv-flow").config();
+
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Dotenv = require("dotenv-webpack");
+
+console.log("[env]", process.env.ASSET_PATH);
 
 const babelOptions = options => {
   const opt = {
@@ -22,6 +26,11 @@ module.exports = {
   context: path.resolve(__dirname, "src"),
   entry: {
     main: ["@babel/polyfill", "./index"]
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[hash].js",
+    publicPath: process.env.ASSET_PATH
   },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".png"],
@@ -55,7 +64,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].[hash].css"
     }),
-    new Dotenv()
+    new webpack.EnvironmentPlugin(["NODE_ENV", "API", "ASSET_PATH"])
   ],
   module: {
     rules: [
