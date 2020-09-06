@@ -2,6 +2,8 @@ import React from "react";
 
 import { Col, Form } from "react-bootstrap";
 
+import { defaultTypes, types } from "./types";
+
 const Input = ({
   id = "",
   title = "",
@@ -28,5 +30,8 @@ const Input = ({
     </Form.Control.Feedback>
   </Form.Group>
 );
+
+Input.defaultProps = defaultTypes
+Input.propTypes = types;
 
 export default Input;

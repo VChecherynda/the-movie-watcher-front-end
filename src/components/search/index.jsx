@@ -4,6 +4,7 @@ import { Form, FormControl, InputGroup, Col } from "react-bootstrap";
 
 import { FaSearch } from "react-icons/fa";
 
+import { defaultTypes, types } from "./types";
 import withHooks from "./withHooks";
 
 const Search = ({ changed }) => (
@@ -27,5 +28,8 @@ const Search = ({ changed }) => (
     </Form.Row>
   </Form>
 );
+
+Search.defaultProps = defaultTypes
+Search.propTypes = types;
 
 export default withHooks(Search);

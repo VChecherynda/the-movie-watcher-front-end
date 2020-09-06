@@ -6,9 +6,10 @@ import Search from "@components/search";
 import Add from "@components/add";
 import Card from "@components/card";
 
+import { defaultTypes, types } from "./types";
 import withHooks from "./withHooks";
 
-const List = ({ movies }) => (
+const List = ({ movies = [] }) => (
   <>
     <Header />
 
@@ -35,5 +36,8 @@ const List = ({ movies }) => (
     </Container>
   </>
 );
+
+List.defaultProps = defaultTypes
+List.propTypes = types;
 
 export default withHooks(List);

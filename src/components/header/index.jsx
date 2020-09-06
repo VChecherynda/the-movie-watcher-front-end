@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Navbar, Alert } from "react-bootstrap";
 
+import { defaultTypes, types } from "./types";
 import withHooks from "./withHooks";
 
 const Header = ({ error }) => (
@@ -22,5 +23,8 @@ const Header = ({ error }) => (
     )}
   </div>
 );
+
+Header.defaultProps = defaultTypes
+Header.propTypes = types;
 
 export default withHooks(Header);

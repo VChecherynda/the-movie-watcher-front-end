@@ -4,6 +4,7 @@ import { Container, Row, ListGroup, Button } from "react-bootstrap";
 
 import Header from "@components/header";
 
+import { defaultTypes, types } from "./types";
 import withHooks from "./withHooks";
 
 const Movie = ({
@@ -31,5 +32,8 @@ const Movie = ({
     </Container>
   </>
 );
+
+Movie.defaultProps = defaultTypes
+Movie.propTypes = types;
 
 export default withHooks(Movie);

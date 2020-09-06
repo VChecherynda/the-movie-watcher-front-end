@@ -20,6 +20,7 @@ In this app we for bundle all our assets we use webpack ( dev / build .env )
   - react-bootstrap ( for simplify customizing app )
   - react-router-dom ( for routing )
   - react-redux ( for global store )
+  - prop-types ( for checking types which transmits into components )
   - formik ( for simplify input validation )
   - reselect ( simple selector library to make complex selector and compute derived data )
   ...
@@ -27,8 +28,16 @@ In this app we for bundle all our assets we use webpack ( dev / build .env )
 # Structure:
 
 - views ( consist of implemenation of different domains )
+  - view ( 1 unit, here we divide logic and mark-up for this we use hoc )
+    - index.js ( here we put mark-up )
+    - types ( here we put all props which we want to check and which transmits to the component )
+    - withHooks ( here we put all logic )
 
 - components ( block for constructing views )
+  - component ( 1 unit, here we divide logic and mark-up for this we use hoc )
+    - index.js ( here we put mark-up )
+    - types ( here we put all props which we want to check and which transmits to the component )
+    - withHooks ( here we put all logic )
 
 - asstes ( for adding fonts / images / styles )
   - styles ( css / scss styles for views )

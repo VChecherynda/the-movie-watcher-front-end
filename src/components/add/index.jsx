@@ -5,9 +5,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
+import { defaultTypes, types } from "./types";
 import withHooks from "./withHooks";
 
-const Add = ({ isBtnDisabled, changed, upload, inputRef, listLabel }) => (
+const Add = ({ isBtnDisabled = false, changed, upload, inputRef = {}, listLabel= "" }) => (
   <Form onSubmit={upload}>
     <Form.Row>
       <Col sm={8}>
@@ -40,5 +41,8 @@ const Add = ({ isBtnDisabled, changed, upload, inputRef, listLabel }) => (
     </Form.Row>
   </Form>
 );
+
+Add.defaultProps = defaultTypes
+Add.propTypes = types;
 
 export default withHooks(Add);

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
+import { defaultTypes, types } from "./types";
 import withHooks from "./withHooks";
 
 const CardComponent = ({
@@ -26,5 +27,8 @@ const CardComponent = ({
     </Card.Body>
   </Card>
 );
+
+CardComponent.defaultProps = defaultTypes
+CardComponent.propTypes = types;
 
 export default withHooks(CardComponent);

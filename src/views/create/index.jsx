@@ -10,6 +10,7 @@ import Input from "@components/forms/input";
 import schemaMovie from "@validations/movie";
 import { initialData, formInputs } from "@configs/movie";
 
+import { defaultTypes, types } from "./types";
 import withHooks from "./withHooks";
 
 const Create = ({ handleCreate }) => (
@@ -71,5 +72,8 @@ const Create = ({ handleCreate }) => (
     </Container>
   </>
 );
+
+Create.defaultProps = defaultTypes
+Create.propTypes = types;
 
 export default withHooks(Create);
