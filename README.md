@@ -1,15 +1,28 @@
 # the-movie-watcher-front-end
 
-# Install
+# Install:
 
 To start this app:
-  1. Create .env files and set DEV_PUBLIC and API variables
+  1. Create .env ( for development ) files and set ASSET_PATH and API variables
   2. npm install && npm start
   
-# Production build
-  1. npm run build
+# Production build:
+
+To create build:
+  1. Create .env.production file and set into it ASSET_PATH and API variables
+  2. npm run build
 
 In this app we for bundle all our assets we use webpack ( dev / build .env )
+
+# Libs:
+
+  - axios ( for simplify work with requests )
+  - react-bootstrap ( for simplify customizing app )
+  - react-router-dom ( for routing )
+  - react-redux ( for global store )
+  - formik ( for simplify input validation )
+  - reselect ( simple selector library to make complex selector and compute derived data )
+  ...
 
 # Structure:
 
