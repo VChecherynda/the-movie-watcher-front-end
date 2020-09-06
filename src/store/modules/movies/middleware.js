@@ -5,7 +5,7 @@ export const fetchMovies = createAsyncThunk(
   "movies/fetchMovies",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await client.get("movies/find/");
+      const response = await client.get("movies/find");
       return response.data;
     } catch (err) {
       if (!err.response) {
@@ -53,6 +53,8 @@ export const uploadMovieList = createAsyncThunk(
   "movies/uploadMovieList",
   async (payload, { rejectWithValue }) => {
     try {
+      console.log("[payload]", payload.get("file"));
+
       const response = await client.upload("movies/upload", payload);
       return response.data;
     } catch (err) {

@@ -10,7 +10,7 @@ const CardComponent = ({
   movie: { id = "", title = "", stars = "" } = {},
   handleDeleteMovie
 }) => (
-  <Card>
+  <Card className="mb-4">
     <Card.Body>
       <Card.Title>Title: {title}</Card.Title>
 

@@ -34,6 +34,7 @@ const Create = ({ handleCreate }) => {
               initialValues={initialData}
             >
               {({
+                isValid,
                 handleSubmit,
                 handleChange,
                 handleBlur,
@@ -58,7 +59,9 @@ const Create = ({ handleCreate }) => {
                     ))}
 
                     <Form.Group as={Col} md="12">
-                      <Button type="submit">Add movie</Button>
+                      <Button disabled={!isValid} type="submit">
+                        Add movie
+                      </Button>
                     </Form.Group>
                   </Form.Row>
                 </Form>

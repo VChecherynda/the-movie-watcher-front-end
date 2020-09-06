@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 
 import withHooks from "./withHooks";
 
-const Add = ({ changed, upload, inputRef, listLabel }) => (
+const Add = ({ isBtnDisabled, changed, upload, inputRef, listLabel }) => (
   <Form onSubmit={upload}>
     <Form.Row>
       <Col sm={8}>
@@ -27,7 +27,7 @@ const Add = ({ changed, upload, inputRef, listLabel }) => (
       </Col>
 
       <Col sm={2}>
-        <Button type="submit" block>
+        <Button type="submit" disabled={isBtnDisabled} block>
           Add List
         </Button>
       </Col>

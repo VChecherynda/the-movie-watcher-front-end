@@ -3,9 +3,13 @@ import { useDispatch } from "react-redux";
 
 import { uploadMovieList } from "@store/modules/movies/middleware";
 
+const DEFAULT_INPUT_FILE_MESSAGE = "Upload File ...";
+
 const withHooks = WrappedComponent => {
   const Wrapped = props => {
-    const [listLabel, setListLabel] = useState("File name");
+    const [listLabel, setListLabel] = useState(DEFAULT_INPUT_FILE_MESSAGE);
+    const [isBtnDisabled, setIsBtnDisabled] = useState(null);
+
     const dispatch = useDispatch();
     const inputRef = useRef(null);
 
@@ -15,6 +19,15 @@ const withHooks = WrappedComponent => {
       }
     }, []);
 
+    useEffect(() => {
+      if (inputRef.current) {
+        const file = inputRef.current.files[0];
+        const isFileUpload = Boolean(file);
+
+        setIsBtnDisabled(!isFileUpload);
+      }
+    }, [listLabel]);
+
     const changed = e => {
       setListLabel(e.target.files[0].name);
     };
@@ -22,13 +35,21 @@ const withHooks = WrappedComponent => {
     const upload = async e => {
       e.preventDefault();
       const file = inputRef.current.files[0];
+
       const formData = new FormData();
       await formData.append("file", file);
+
       dispatch(uploadMovieList(formData));
+
+      inputRef.current.value = "";
+      inputRef.current.files = null;
+
+      setListLabel(DEFAULT_INPUT_FILE_MESSAGE);
     };
 
     return (
       <WrappedComponent
+        isBtnDisabled={isBtnDisabled}
         changed={changed}
         upload={upload}
         inputRef={inputRef}
