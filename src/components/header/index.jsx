@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import { Container, Alert } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Container, Navbar, Alert } from "react-bootstrap";
 
 import withHooks from "./withHooks";
 
@@ -9,15 +9,17 @@ const Header = ({ error }) => (
     <div className="bg-primary">
       <Container>
         <Navbar variant="dark" className="pr-0 pl-0">
-          <Navbar.Brand>Movie List</Navbar.Brand>
+          <Navbar.Brand>
+            <Link to="/" className="header__link">Movie List</Link>
+          </Navbar.Brand>
         </Navbar>
       </Container>
     </div>
     {error && (
-        <Alert variant="danger" transition>
-          {error}
-        </Alert>
-      )}
+      <Alert variant="danger" transition>
+        {error}
+      </Alert>
+    )}
   </div>
 );
 

@@ -1,1 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
+
+.header__link {
+  text-decoration: none;
+  color: $white;
+
+  &:hover {
+    color: $white;
+  }
+}
