@@ -53,9 +53,11 @@ export const uploadMovieList = createAsyncThunk(
   "movies/uploadMovieList",
   async (payload, { rejectWithValue }) => {
     try {
-      console.log("[payload]", payload.get("file"));
-
-      const response = await client.upload("movies/upload", payload);
+      const response = await client.post("movies/upload", payload, {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      });
       return response.data;
     } catch (err) {
       if (!err.response) {
@@ -68,7 +70,6 @@ export const uploadMovieList = createAsyncThunk(
 );
 
 export const deleteMovie = createAsyncThunk("movies/deleteMovie", async id => {
-  const response = await client.del(`movies/delete/${id}`);
-
+  const response = await client.delete(`movies/delete/${id}`);
   return response.data;
 });

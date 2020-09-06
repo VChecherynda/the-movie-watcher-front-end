@@ -1,7 +1,7 @@
-export const filterWords = (data, word, fields) => {
+export const filterEntetiesByWords = (data, word, fields) => {
   if (data) {
-    return data.filter(
-      item => item[fields[0]].includes(word) || item[fields[1]].includes(word)
+    return data.filter(item =>
+      fields.some(field => item[field].includes(word))
     );
   }
 
