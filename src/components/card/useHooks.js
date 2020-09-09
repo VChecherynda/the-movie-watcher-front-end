@@ -1,7 +1,7 @@
 import { useMemo, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import { deleteMovie } from "@store/modules/movies/middleware";
+import { deleteMovie } from "../../store/modules/movies/middleware";
 
 const useHooks = ({ movie, ...rest }) => {
   const dispatch = useDispatch();

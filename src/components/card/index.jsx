@@ -5,25 +5,26 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 import useHooks from './useHooks';
+import { defaultTypes, types } from "./types";
 
-export default function CardComponent(props) {
-  const { memoMovie } = useHooks(props);
+function CardComponent(props) {
+  const { movieProps } = useHooks(props);
 
   return (
     <Card className="mb-4">
       <Card.Body>
-        <Card.Title>Title: {memoMovie.title}</Card.Title>
+        <Card.Title>Title: {movieProps.title}</Card.Title>
 
-        <Card.Title>Stars: {memoMovie.stars}</Card.Title>
+        <Card.Title>Stars: {movieProps.stars}</Card.Title>
 
-        <Link to={`/movie/${memoMovie.id}`} className="mr-2">
+        <Link to={`/movie/${movieProps.id}`} className="mr-2">
           <Button variant="primary">Details</Button>
         </Link>
 
         <Button
           variant="danger"
           type="button"
-          onClick={handleDeleteMovie}
+          onClick={movieProps.handleDeleteMovie}
         >
           Delete
         </Button>

@@ -11,8 +11,7 @@ console.log("[env]", process.env.ASSET_PATH);
 
 const babelOptions = options => {
   const opt = {
-    presets: ["@babel/preset-env", "@babel/preset-react"],
-    plugins: ["@babel/plugin-proposal-class-properties"]
+    presets: ["@babel/preset-env", "@babel/preset-react"]
   };
 
   if (options) {

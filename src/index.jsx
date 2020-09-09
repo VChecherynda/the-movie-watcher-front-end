@@ -3,8 +3,8 @@ import { render } from "react-dom";
 
 import Router from './router';
 
-import store from './store'
-import { Provider } from 'react-redux'
+import store from './store';
+import { Provider } from 'react-redux';
 
 render(
   <Provider store={store}>
