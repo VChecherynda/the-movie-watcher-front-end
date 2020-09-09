@@ -5,7 +5,7 @@ import List from "@views/list";
 import Create from "@views/create";
 import Movie from "@views/movie";
 
-import "@/assets/styles/styles.scss";
+import "@assets/styles/styles.scss";
 
 const Router = () => (
   <BrowserRouter>
