@@ -4,31 +4,35 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-import { defaultTypes, types } from "./types";
-import withHooks from "./withHooks";
+import useHooks from './useHooks';
 
-const CardComponent = ({
-  movie: { id = "", title = "", stars = "" } = {},
-  handleDeleteMovie
-}) => (
-  <Card className="mb-4">
-    <Card.Body>
-      <Card.Title>Title: {title}</Card.Title>
+export default function CardComponent(props) {
+  const { memoMovie } = useHooks(props);
 
-      <Card.Title>Stars: {stars}</Card.Title>
+  return (
+    <Card className="mb-4">
+      <Card.Body>
+        <Card.Title>Title: {memoMovie.title}</Card.Title>
 
-      <Link to={`/movie/${id}`} className="mr-2">
-        <Button variant="primary">Details</Button>
-      </Link>
+        <Card.Title>Stars: {memoMovie.stars}</Card.Title>
 
-      <Button variant="danger" type="button" onClick={handleDeleteMovie}>
-        Delete
-      </Button>
-    </Card.Body>
-  </Card>
-);
+        <Link to={`/movie/${memoMovie.id}`} className="mr-2">
+          <Button variant="primary">Details</Button>
+        </Link>
 
-CardComponent.defaultProps = defaultTypes
+        <Button
+          variant="danger"
+          type="button"
+          onClick={handleDeleteMovie}
+        >
+          Delete
+        </Button>
+      </Card.Body>
+    </Card>
+  );
+}
+
+CardComponent.defaultProps = defaultTypes;
 CardComponent.propTypes = types;
 
-export default withHooks(CardComponent);
+export default CardComponent;
