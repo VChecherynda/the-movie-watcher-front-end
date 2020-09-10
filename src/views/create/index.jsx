@@ -6,6 +6,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 import Header from "@components/header";
 import Input from "@components/forms/input";
+import Select from "@components/forms/select";
 
 import schemaMovie from "@validations/movie";
 import { initialData, formInputs } from "@configs/movie";
@@ -29,6 +30,7 @@ const Create = ({ handleCreate }) => (
       <Row>
         <Col>
           <Formik
+            enableReinitialize
             validationSchema={schemaMovie}
             onSubmit={handleCreate}
             initialValues={initialData}
@@ -44,19 +46,40 @@ const Create = ({ handleCreate }) => (
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
                 <Form.Row>
-                  {formInputs.map(input => (
-                    <Input
-                      id={input.id}
-                      key={input.id}
-                      title={input.title}
-                      name={input.name}
-                      value={values[input.name]}
-                      touched={touched[input.name]}
-                      error={errors[input.name]}
-                      changed={handleChange}
-                      blured={handleBlur}
-                    />
-                  ))}
+                  {formInputs.map(element => {
+                    if (element.type === "text") {
+                      return (
+                        <Input
+                          id={element.id}
+                          key={element.id}
+                          title={element.title}
+                          name={element.name}
+                          value={values[element.name]}
+                          touched={touched[element.name]}
+                          error={errors[element.name]}
+                          changed={handleChange}
+                          blured={handleBlur}
+                        />
+                      );
+                    }
+
+                    if (element.type === "select") {
+                      return (
+                        <Select
+                          id={element.id}
+                          key={element.id}
+                          title={element.title}
+                          name={element.name}
+                          value={values[element.name]}
+                          options={element.options}
+                          touched={touched[element.name]}
+                          error={errors[element.name]}
+                          changed={handleChange}
+                          blured={handleBlur}
+                        />
+                      );
+                    }
+                  })}
 
                   <Form.Group as={Col} md="12">
                     <Button disabled={!isValid} type="submit">
@@ -73,7 +96,7 @@ const Create = ({ handleCreate }) => (
   </>
 );
 
-Create.defaultProps = defaultTypes
+Create.defaultProps = defaultTypes;
 Create.propTypes = types;
 
 export default withHooks(Create);
