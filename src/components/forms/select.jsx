@@ -15,8 +15,7 @@ const Select = ({
   changed,
   blured
 }) => (
-  <Form.Group as={Col} md="12" controlId={id}>
-    <Form.Group controlId="exampleForm.ControlSelect1">
+    <Form.Group as={Col} md="12" controlId={id} controlId="exampleForm.ControlSelect1">
       <Form.Label>{title}</Form.Label>
       <Form.Control
         as="select"
@@ -29,7 +28,6 @@ const Select = ({
       >
         {options.map(opt => opt && <option key={`${id}-${opt}`}>{opt}</option>)}
       </Form.Control>
-    </Form.Group>
 
     <Form.Control.Feedback type="invalid" tooltip>
       {error}

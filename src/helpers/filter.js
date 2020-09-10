@@ -8,7 +8,9 @@ export const filterEntetiesByWords = (data, word, fields) => {
   return [];
 };
 
-export const checkStringForUniqueValues = (string, separator) => {
+export const checkStringForUniqueValues = (string, separator = ",") => {
+  if (!string) return false;
+
   const stringWithoutSpaces = string.replace(/ /g, "");
   const stringDivided = stringWithoutSpaces.split(separator);
 
