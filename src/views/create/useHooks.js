@@ -2,9 +2,8 @@ import { useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { showModal, setModalData } from "@store/modules/modals/reducer";
-
 import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
+import { createMovie } from "@store/modules/movies/middleware";
 import { selectRedirectTo } from "@store/modules/movies/selectors";
 
 const useHooks = () => {
@@ -15,8 +14,7 @@ const useHooks = () => {
 
   const handleCreate = useCallback(
     payload => {
-      dispatch(showModal(true));
-      dispatch(setModalData(payload));
+      dispatch(createMovie(payload));
     },
     [dispatch]
   );

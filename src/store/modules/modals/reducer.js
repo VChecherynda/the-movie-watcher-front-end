@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   show: false,
+  type: "",
   redirectTo: "",
   data: {}
 };
@@ -15,6 +16,9 @@ export const modalsSlice = createSlice({
   reducers: {
     showModal: (state, action) => {
       state.show = action.payload;
+    },
+    setModalType: (state, action) => {
+      state.type = action.payload;
     },
     setRedirectTo: (state, action) => {
       state.redirectTo = action.payload;
@@ -30,6 +34,7 @@ export const modalsSlice = createSlice({
 
 export const {
   showModal,
+  setModalType,
   setRedirectTo,
   setModalData,
   clearModal

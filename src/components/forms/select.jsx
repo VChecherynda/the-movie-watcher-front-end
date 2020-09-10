@@ -15,19 +15,23 @@ const Select = ({
   changed,
   blured
 }) => (
-    <Form.Group as={Col} md="12" controlId={id} controlId="exampleForm.ControlSelect1">
-      <Form.Label>{title}</Form.Label>
-      <Form.Control
-        as="select"
-        name={name}
-        value={value}
-        onChange={changed}
-        onBlur={blured}
-        isValid={touched && !error}
-        isInvalid={touched && error}
-      >
-        {options.map(opt => opt && <option key={`${id}-${opt}`}>{opt}</option>)}
-      </Form.Control>
+  <Form.Group
+    as={Col}
+    md="12"
+    controlId={id}
+  >
+    <Form.Label>{title}</Form.Label>
+    <Form.Control
+      as="select"
+      name={name}
+      value={value}
+      onChange={changed}
+      onBlur={blured}
+      isValid={touched && !error}
+      isInvalid={touched && error}
+    >
+      {options.map(opt => opt && <option key={`${id}-${opt}`}>{opt}</option>)}
+    </Form.Control>
 
     <Form.Control.Feedback type="invalid" tooltip>
       {error}

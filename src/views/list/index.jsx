@@ -7,37 +7,41 @@ import Add from "@components/add";
 import Card from "@components/card";
 
 import { defaultTypes, types } from "./types";
-import withHooks from "./withHooks";
+import useHooks from "./useHooks";
 
-const List = ({ movies = [] }) => (
-  <>
-    <Header />
+const List = () => {
+  const { movies } = useHooks();
 
-    <Container>
-      <Row className="mb-4">
-        <Col>
-          <Add />
-        </Col>
-      </Row>
+  return (
+    <>
+      <Header />
 
-      <Row className="mb-4">
-        <Col>
-          <Search />
-        </Col>
-      </Row>
-
-      <Row className="mb-4">
-        {movies.map(movie => (
-          <Col key={movie?.id} sm={4}>
-            <Card movie={movie} />
+      <Container>
+        <Row className="mb-4">
+          <Col>
+            <Add />
           </Col>
-        ))}
-      </Row>
-    </Container>
-  </>
-);
+        </Row>
 
-List.defaultProps = defaultTypes
+        <Row className="mb-4">
+          <Col>
+            <Search />
+          </Col>
+        </Row>
+
+        <Row className="mb-4">
+          {movies.map(movie => (
+            <Col key={movie?.id} sm={4}>
+              <Card movie={movie} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
+  );
+};
+
+List.defaultProps = defaultTypes;
 List.propTypes = types;
 
-export default withHooks(List);
+export default List;

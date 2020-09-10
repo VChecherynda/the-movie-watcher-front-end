@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { createMovie } from "@store/modules/movies/middleware";
+import { deleteMovie } from "@store/modules/movies/middleware";
 import { selectModalData } from "@store/modules/modals/selectors";
 
 import useModals from "../../../hooks/useModal";
 
-const useHooks = props => {
+const useHooks = () => {
   const dispatch = useDispatch();
   const modalData = useSelector(selectModalData);
 
@@ -14,9 +14,9 @@ const useHooks = props => {
   return {
     confirmCreateProps: {
       isVisible,
-      title: "Confirm",
+      title: "Are you sure ?",
       save: () => {
-        dispatch(createMovie(modalData));
+        dispatch(deleteMovie(modalData.id));
         showModal(false);
       },
       cancel: () => {

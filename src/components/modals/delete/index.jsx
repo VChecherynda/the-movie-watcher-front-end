@@ -15,10 +15,10 @@ const Create = (props) => {
 
       <Modal.Footer>
         <Button onClick={confirmCreateProps.cancel} variant="secondary">
-          Close
+          No
         </Button>
         <Button onClick={confirmCreateProps.save} variant="primary">
-          Save changes
+          Yes
         </Button>
       </Modal.Footer>
     </Modal>

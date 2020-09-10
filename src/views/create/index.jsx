@@ -7,7 +7,6 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "@components/header";
 import Input from "@components/forms/input";
 import Select from "@components/forms/select";
-import ConfirmCreate from "@components/modals/create";
 
 import schemaMovie from "@validations/movie";
 import { initialData, formInputs } from "@configs/movie";
@@ -21,8 +20,6 @@ const Create = () => {
   return (
     <>
       <Header />
-
-      <ConfirmCreate />
 
       <Container>
         <Row className="mb-4">
