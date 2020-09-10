@@ -5,6 +5,7 @@ import Header from "@components/header";
 import Search from "@components/search";
 import Add from "@components/add";
 import Card from "@components/card";
+import Pagination from "@components/pagination";
 
 import { defaultTypes, types } from "./types";
 import useHooks from "./useHooks";
@@ -42,6 +43,13 @@ const List = () => {
             </Col>
           ))}
         </Row>
+
+        <Row>
+          <Col>
+            <Pagination />
+          </Col>
+        </Row>
+          
       </Container>
     </>
   );
