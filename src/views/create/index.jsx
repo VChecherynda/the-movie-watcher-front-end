@@ -30,7 +30,6 @@ const Create = ({ handleCreate }) => (
       <Row>
         <Col>
           <Formik
-            enableReinitialize
             validationSchema={schemaMovie}
             onSubmit={handleCreate}
             initialValues={initialData}
@@ -40,6 +39,7 @@ const Create = ({ handleCreate }) => (
               handleSubmit,
               handleChange,
               handleBlur,
+              setFieldValue,
               values,
               touched,
               errors
@@ -57,7 +57,19 @@ const Create = ({ handleCreate }) => (
                           value={values[element.name]}
                           touched={touched[element.name]}
                           error={errors[element.name]}
-                          changed={handleChange}
+                          changed={(e) => {
+
+                            const value = e.target.value;
+                            const serializedValue = value.replace(/ /g, "").split(',');
+                            let isHasDuplicateValue = false;
+
+                            if (serializedValue.length && serializedValue.length > 1) {
+                              isHasDuplicateValue = serializedValue.length !== new Set(serializedValue).size;
+                            }
+
+       
+                            setFieldValue(element.name, e.target.value)
+                          }}
                           blured={handleBlur}
                         />
                       );

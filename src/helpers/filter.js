@@ -7,3 +7,14 @@ export const filterEntetiesByWords = (data, word, fields) => {
 
   return [];
 };
+
+export const checkStringForUniqueValues = (string, separator) => {
+  const stringWithoutSpaces = string.replace(/ /g, "");
+  const stringDivided = stringWithoutSpaces.split(separator);
+
+  if (stringDivided.length && stringDivided.length > 1) {
+    return stringDivided.length === new Set(stringDivided).size;
+  }
+
+  return true;
+};

@@ -4,7 +4,7 @@ export const initialData = {
   title: "Title",
   release: "1987",
   format: videoFormats[0],
-  stars: "John"
+  stars: ""
 };
 
 export const formInputs = [
