@@ -15,6 +15,6 @@ export const selectSearchWord = state => state.movies.searchWord;
 export const selectFilteredMovies = createSelector(
   [selectMovies, selectSearchWord],
   (movies, searchWord) => {
-    return filterEntetiesByWords(movies, searchWord, ["title", "stars"]);
+    return filterEntetiesByWords(movies, searchWord, ["title", "stars"]) || [];
   }
 );

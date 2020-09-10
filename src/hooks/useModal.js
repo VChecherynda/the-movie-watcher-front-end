@@ -5,17 +5,16 @@ import { showModal, clearModal } from "@store/modules/modals/reducer";
 import { selectModalShow } from "@store/modules/modals/selectors";
 
 const useModals = () => {
-  const isVisible = useSelector(selectModalShow);
-  const isNotVisible = !isVisible;
   const dispatch = useDispatch();
 
-  console.log();
+  const isVisible = useSelector(selectModalShow);
+  const isNotVisible = !isVisible;
 
   useEffect(() => {
     if (isNotVisible) {
       dispatch(clearModal());
     }
-  }, [isNotVisible]);
+  }, [dispatch, isNotVisible]);
 
   return {
     isVisible,

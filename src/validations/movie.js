@@ -14,7 +14,11 @@ const movie = Yup.object({
     .required(),
   format: Yup.string().required(),
   stars: Yup.string()
-    .test("is-unique", "Value should be unique", checkStringForUniqueValues)
+    .test(
+      "is-unique",
+      "Values into field should be unique",
+      checkStringForUniqueValues
+    )
     .required()
 });
 

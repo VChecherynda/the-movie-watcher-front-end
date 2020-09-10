@@ -3,11 +3,17 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
 import { fetchMovies } from "@store/modules/movies/middleware";
-import { selectFilteredMovies } from "@store/modules/movies/selectors";
+import {
+  selectSearchWord,
+  selectFilteredMovies
+} from "@store/modules/movies/selectors";
 
 const useHooks = () => {
-  const movies = useSelector(selectFilteredMovies);
   const dispatch = useDispatch();
+
+  const searchedWord = useSelector(selectSearchWord);
+  const filteredMovies = useSelector(selectFilteredMovies);
+  const isNotFound = searchedWord && filteredMovies.length === 0;
 
   useEffect(() => {
     dispatch(fetchMovies());
@@ -18,7 +24,7 @@ const useHooks = () => {
     };
   }, [dispatch]);
 
-  return { movies };
+  return { listProps: { isNotFound, movies: filteredMovies } };
 };
 
 export default useHooks;
