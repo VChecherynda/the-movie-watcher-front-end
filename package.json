@@ -5,8 +5,11 @@
   "private": "true",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config webpack.dev.js --open",
+    "start:windows": "SET NODE_ENV=development && webpack-dev-server --config webpack.dev.js --open",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "build:windows": "SET NODE_ENV=production && webpack --config webpack.prod.js",
     "test": "NODE_ENV=test jest --config ./jest.config.js",
+    "test:windows": "SET NODE_ENV=test && jest --config ./jest.config.js",
     "stats": "webpack --config webpack.prod.js --json > stats.json && webpack-bundle-analyzer stats.json"
   },
   "browserslist": "> 0.25%, not dead",
