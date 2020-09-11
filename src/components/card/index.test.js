@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import CardComponent from "./index";
+import Component from "./index";
 
 import store from "@store";
 import { Provider } from "react-redux";
@@ -15,7 +15,7 @@ describe("Card component", () => {
   const wrapper = mount(
     <Provider store={store}>
       <BrowserRouter>
-        <CardComponent movie={movie} />
+        <Component movie={movie} />
       </BrowserRouter>
     </Provider>
   );

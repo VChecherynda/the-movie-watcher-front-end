@@ -26,10 +26,18 @@ const Movie = () => {
 
         <Row>
           <ListGroup>
-            <ListGroup.Item>{`Title: ${title}`}</ListGroup.Item>
-            <ListGroup.Item>{`Release: ${release}`}</ListGroup.Item>
-            <ListGroup.Item>{`Format: ${format}`}</ListGroup.Item>
-            <ListGroup.Item>{`Stars: ${stars}`}</ListGroup.Item>
+            <ListGroup.Item>
+              <span className="list-group-item__title">{`Title: ${title}`}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span className="list-group-item__release">{`Release: ${release}`}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span className="list-group-item__format">{`Format: ${format}`}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span className="list-group-item__stars">{`Stars: ${stars}`}</span>
+            </ListGroup.Item>
           </ListGroup>
         </Row>
       </Container>

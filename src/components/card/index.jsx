@@ -10,7 +10,6 @@ import { defaultTypes, types } from "./types";
 function CardComponent(props) {
   const { movieProps } = useHooks(props);
 
-
   return (
     <Card className="mb-4">
       <Card.Body>
