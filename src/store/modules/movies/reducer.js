@@ -12,6 +12,7 @@ const initialState = {
   status: "idle",
   searchWord: "",
   entities: [],
+  pagination: {},
   current: {},
   redirectTo: "",
   error: ""
@@ -43,9 +44,12 @@ export const moviesSlice = createSlice({
       state.error = "";
     },
     [fetchMovies.fulfilled]: (state, action) => {
+      const { items, ...rest } = action.payload;
+
       state.status = "succeeded";
       state.error = "";
-      state.entities = action.payload;
+      state.entities = items;
+      state.pagination = rest;
     },
     [fetchMovies.rejected]: (state, action) => {
       state.status = "failed";

@@ -5,7 +5,8 @@ import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
 import { fetchMovies } from "@store/modules/movies/middleware";
 import {
   selectSearchWord,
-  selectFilteredMovies
+  selectFilteredMovies,
+  selectPagination
 } from "@store/modules/movies/selectors";
 
 const useHooks = () => {
@@ -13,10 +14,11 @@ const useHooks = () => {
 
   const searchedWord = useSelector(selectSearchWord);
   const filteredMovies = useSelector(selectFilteredMovies);
+  const pagination = useSelector(selectPagination);
   const isNotFound = searchedWord && filteredMovies.length === 0;
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchMovies(1));
 
     return () => {
       dispatch(clearStatus());
@@ -24,7 +26,7 @@ const useHooks = () => {
     };
   }, [dispatch]);
 
-  return { listProps: { isNotFound, movies: filteredMovies } };
+  return { listProps: { isNotFound, movies: filteredMovies, pagination } };
 };
 
 export default useHooks;

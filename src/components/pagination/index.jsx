@@ -1,29 +1,40 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 
 import { Pagination } from "react-bootstrap";
 
-// import useHooks from "./useHooks";
+import useHooks from "./useHooks";
 import { defaultTypes, types } from "./types";
 
 function PaginationComponent(props) {
-  // const {} = useHooks(props);
+  const {
+    paginationProps: {
+      prevPage,
+      currentPage,
+      nextPage,
+      lastPage,
+      hasPrevPage,
+      hasNextPage
+    },
+    fetchMovies
+  } = useHooks(props);
 
   return (
     <Pagination>
-      <Pagination.First />
-      <Pagination.Prev />
-      <Pagination.Item>{1}</Pagination.Item>
-      <Pagination.Item>{2}</Pagination.Item>
-      <Pagination.Item>{3}</Pagination.Item>
-      <Pagination.Item active>{4}</Pagination.Item>
-      <Pagination.Item>{5}</Pagination.Item>
+      {currentPage !== 1 && prevPage !== 1 && <Pagination.Item  onClick={() => fetchMovies(1)}>{1}</Pagination.Item>}
 
-      <Pagination.Ellipsis />
+      {hasPrevPage && <Pagination.Item onClick={() => fetchMovies(prevPage)}>{prevPage}</Pagination.Item>}
 
-      <Pagination.Item>{20}</Pagination.Item>
-      <Pagination.Next />
-      <Pagination.Last />
+      {currentPage === lastPage && <Pagination.Ellipsis />}
+
+      {currentPage && <Pagination.Item active>{currentPage}</Pagination.Item>}
+
+      {hasNextPage && <Pagination.Ellipsis />}
+
+      {hasNextPage && <Pagination.Item onClick={() => fetchMovies(nextPage)}>{nextPage}</Pagination.Item>}
+
+      {lastPage !== currentPage && lastPage !== nextPage && (
+        <Pagination.Item onClick={() => fetchMovies(lastPage)}>{lastPage}</Pagination.Item>
+      )}
     </Pagination>
   );
 }

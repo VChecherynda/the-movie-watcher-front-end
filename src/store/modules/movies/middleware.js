@@ -3,9 +3,9 @@ import client from "@api/client";
 
 export const fetchMovies = createAsyncThunk(
   "movies/fetchMovies",
-  async (_, { rejectWithValue }) => {
+  async (page, { rejectWithValue }) => {
     try {
-      const response = await client.get("movies/find");
+      const response = await client.get(`movies/find/${page}`);
       return response.data;
     } catch (err) {
       if (!err.response) {
@@ -69,7 +69,18 @@ export const uploadMovieList = createAsyncThunk(
   }
 );
 
-export const deleteMovie = createAsyncThunk("movies/deleteMovie", async id => {
-  const response = await client.delete(`movies/delete/${id}`);
-  return response.data;
-});
+export const deleteMovie = createAsyncThunk(
+  "movies/deleteMovie",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await client.delete(`movies/delete/${id}`);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+
+      return rejectWithValue(err.response.data);
+    }
+  }
+);

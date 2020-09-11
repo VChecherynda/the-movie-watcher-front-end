@@ -1,16 +1,20 @@
-import { useMemo, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import {
-  showModal,
-  setModalType,
-  setModalData
-} from "@store/modules/modals/reducer";
+import { fetchMovies } from "@store/modules/movies/middleware";
 
-const useHooks = ({ movie, ...rest }) => {
+const useHooks = ({ pagination }) => {
   const dispatch = useDispatch();
-
-  return {};
+  return {
+    paginationProps: {
+      currentPage: Number(pagination?.currentPage) || 1,
+      nextPage: Number(pagination?.nextPage) || 1,
+      prevPage: Number(pagination?.prevPage) || 0,
+      lastPage: Number(pagination?.lastPage) || 0,
+      hasNextPage: pagination?.hasNextPage,
+      hasPrevPage: pagination?.hasPrevPage
+    },
+    fetchMovies: page => dispatch(fetchMovies(page))
+  };
 };
 
 export default useHooks;

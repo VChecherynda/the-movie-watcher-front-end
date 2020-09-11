@@ -46,7 +46,7 @@ const List = () => {
 
         <Row>
           <Col>
-            <Pagination />
+            <Pagination pagination={listProps?.pagination} />
           </Col>
         </Row>
           
