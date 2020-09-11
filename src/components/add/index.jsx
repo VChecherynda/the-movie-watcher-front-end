@@ -6,43 +6,55 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
 import { defaultTypes, types } from "./types";
-import withHooks from "./withHooks";
+import useHooks from "./useHooks";
 
-const Add = ({ isBtnDisabled = false, changed, upload, inputRef = {}, listLabel= "" }) => (
-  <Form onSubmit={upload}>
-    <Form.Row>
-      <Col sm={8}>
-        <Form.File id="addMovieList" custom>
-          <Form.File.Input ref={inputRef} onChange={changed} />
+const Add = () => {
+  const {
+    addProps: {
+      isBtnDisabled = false,
+      changed,
+      upload,
+      inputRef = {},
+      listLabel = ""
+    } = {}
+  } = useHooks();
 
-          <Form.File.Label data-browse="Upload list">
-            {listLabel}
-          </Form.File.Label>
+  return (
+    <Form onSubmit={upload}>
+      <Form.Row>
+        <Col sm={8}>
+          <Form.File id="addMovieList" custom>
+            <Form.File.Input ref={inputRef} onChange={changed} />
 
-          <Form.Control.Feedback type="valid">
-            You did it!
-          </Form.Control.Feedback>
+            <Form.File.Label data-browse="Upload list">
+              {listLabel}
+            </Form.File.Label>
 
-          {/* <Form.Control.Feedback type="valid">You did it!</Form.Control.Feedback> */}
-        </Form.File>
-      </Col>
+            <Form.Control.Feedback type="valid">
+              You did it!
+            </Form.Control.Feedback>
 
-      <Col sm={2}>
-        <Button type="submit" disabled={isBtnDisabled} block>
-          Add List
-        </Button>
-      </Col>
+            {/* <Form.Control.Feedback type="valid">You did it!</Form.Control.Feedback> */}
+          </Form.File>
+        </Col>
 
-      <Col sm={2}>
-        <Link to="/movie/create">
-          <Button block>Add Movie</Button>
-        </Link>
-      </Col>
-    </Form.Row>
-  </Form>
-);
+        <Col sm={2}>
+          <Button type="submit" disabled={isBtnDisabled} block>
+            Add List
+          </Button>
+        </Col>
 
-Add.defaultProps = defaultTypes
+        <Col sm={2}>
+          <Link to="/movie/create">
+            <Button block>Add Movie</Button>
+          </Link>
+        </Col>
+      </Form.Row>
+    </Form>
+  );
+};
+
+Add.defaultProps = defaultTypes;
 Add.propTypes = types;
 
-export default withHooks(Add);
+export default Add;
