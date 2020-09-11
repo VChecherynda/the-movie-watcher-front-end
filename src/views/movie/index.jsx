@@ -5,35 +5,39 @@ import { Container, Row, ListGroup, Button } from "react-bootstrap";
 import Header from "@components/header";
 
 import { defaultTypes, types } from "./types";
-import withHooks from "./withHooks";
+import useHooks from "./useHooks";
 
-const Movie = ({
-  movieCurrent: { title = "", release = "", format = "", stars = "" }
-}) => (
-  <>
-    <Header />
-    <Container>
-      <Row>
-        <Link to="/">
-          <Button className="mb-4" block>
-            Back
-          </Button>
-        </Link>
-      </Row>
+const Movie = () => {
+  const {
+    movieCurrent: { title = "", release = "", format = "", stars = "" } = {}
+  } = useHooks();
 
-      <Row>
-        <ListGroup>
-          <ListGroup.Item>{`Title: ${title}`}</ListGroup.Item>
-          <ListGroup.Item>{`Release: ${release}`}</ListGroup.Item>
-          <ListGroup.Item>{`Format: ${format}`}</ListGroup.Item>
-          <ListGroup.Item>{`Stars: ${stars}`}</ListGroup.Item>
-        </ListGroup>
-      </Row>
-    </Container>
-  </>
-);
+  return (
+    <>
+      <Header />
+      <Container>
+        <Row>
+          <Link to="/">
+            <Button className="mb-4" block>
+              Back
+            </Button>
+          </Link>
+        </Row>
 
-Movie.defaultProps = defaultTypes
+        <Row>
+          <ListGroup>
+            <ListGroup.Item>{`Title: ${title}`}</ListGroup.Item>
+            <ListGroup.Item>{`Release: ${release}`}</ListGroup.Item>
+            <ListGroup.Item>{`Format: ${format}`}</ListGroup.Item>
+            <ListGroup.Item>{`Stars: ${stars}`}</ListGroup.Item>
+          </ListGroup>
+        </Row>
+      </Container>
+    </>
+  );
+};
+
+Movie.defaultProps = defaultTypes;
 Movie.propTypes = types;
 
-export default withHooks(Movie);
+export default Movie;

@@ -27,8 +27,10 @@ function PaginationComponent(props) {
       <Pagination.First onClick={() => handleMovies(1)} />
 
       {currentPage !== 1 && prevPage !== 1 && (
-       <Pagination.Item onClick={() => handleMovies(1)}>{1}</Pagination.Item>
+        <Pagination.Item onClick={() => handleMovies(1)}>{1}</Pagination.Item>
       )}
+
+      {hasPrevPage && currentPage == lastPage && <Pagination.Ellipsis />}
 
       {hasPrevPage && prevPage !== currentPage && (
         <Pagination.Item onClick={() => handleMovies(prevPage)}>
@@ -36,11 +38,9 @@ function PaginationComponent(props) {
         </Pagination.Item>
       )}
 
-      {hasPrevPage && currentPage === lastPage && <Pagination.Ellipsis />}
-
       {currentPage && <Pagination.Item active>{currentPage}</Pagination.Item>}
 
-      {hasNextPage && <Pagination.Ellipsis />}
+      {hasNextPage && currentPage !== lastPage && <Pagination.Ellipsis />}
 
       {hasNextPage && (
         <Pagination.Item onClick={() => handleMovies(nextPage)}>

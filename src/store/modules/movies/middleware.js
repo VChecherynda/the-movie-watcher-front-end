@@ -21,7 +21,7 @@ export const fetchMovieCurrent = createAsyncThunk(
   "movies/fetchMovieCurrent",
   async (id, { rejectWithValue }) => {
     try {
-      const response = await client.get(`movies/find/${id}`);
+      const response = await client.get(`movies/find-one/${id}`);
       return response.data;
     } catch (err) {
       if (!err.response) {
