@@ -6,7 +6,6 @@ import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
 import { fetchMovies } from "@store/modules/movies/middleware";
 import {
   selectSearchWord,
-  selectMovies,
   selectFilteredMovies,
   selectPagination
 } from "@store/modules/movies/selectors";
