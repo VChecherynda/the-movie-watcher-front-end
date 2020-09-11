@@ -21,10 +21,10 @@ const useHooks = () => {
   useRedirect();
 
   const searchedWord = useSelector(selectSearchWord);
-  const movies = useSelector(selectMovies);
   const filteredMovies = useSelector(selectFilteredMovies);
   const pagination = useSelector(selectPagination);
-  const isNoMovies = pagination?.total === 0;
+  const paginationTotal = pagination?.total;
+  const isNoMovies = paginationTotal === 0;
   const isNotFound = searchedWord && filteredMovies.length === 0;
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const useHooks = () => {
       dispatch(clearStatus());
       dispatch(clearRedirectTo());
     };
-  }, [dispatch, movies, currentPage]);
+  }, [dispatch, paginationTotal, currentPage]);
 
   return {
     listProps: { isNoMovies, isNotFound, movies: filteredMovies, pagination }

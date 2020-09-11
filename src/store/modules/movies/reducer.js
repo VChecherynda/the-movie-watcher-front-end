@@ -103,6 +103,7 @@ export const moviesSlice = createSlice({
 
       state.status = "succeeded";
       state.redirectTo = redirectTo;
+      state.pagination.total = state.pagination.total - 1;
 
       state.error = "";
       state.entities = filteredEntities;
@@ -118,6 +119,7 @@ export const moviesSlice = createSlice({
     [uploadMovieList.fulfilled]: state => {
       state.status = "succeeded";
       state.error = "";
+      state.pagination.total = state.pagination.total + 1;
       state.redirectTo = "movies/1";
     },
     [uploadMovieList.rejected]: (state, action) => {
