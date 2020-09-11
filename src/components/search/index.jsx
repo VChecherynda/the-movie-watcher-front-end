@@ -5,31 +5,35 @@ import { Form, FormControl, InputGroup, Col } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 
 import { defaultTypes, types } from "./types";
-import withHooks from "./withHooks";
+import useHooks from "./useHooks";
 
-const Search = ({ changed }) => (
-  <Form>
-    <Form.Row>
-      <Col sm={12}>
-        <InputGroup className="mb-2">
-          <InputGroup.Prepend>
-            <InputGroup.Text>
-              <FaSearch />
-            </InputGroup.Text>
-          </InputGroup.Prepend>
+const Search = () => {
+  const { searchProps: { changed } = {} } = useHooks();
 
-          <FormControl
-            id="searchTitleOrActor"
-            placeholder="Enter Film title or Actor name"
-            onChange={changed}
-          />
-        </InputGroup>
-      </Col>
-    </Form.Row>
-  </Form>
-);
+  return (
+    <Form>
+      <Form.Row>
+        <Col sm={12}>
+          <InputGroup className="mb-2">
+            <InputGroup.Prepend>
+              <InputGroup.Text>
+                <FaSearch />
+              </InputGroup.Text>
+            </InputGroup.Prepend>
 
-Search.defaultProps = defaultTypes
+            <FormControl
+              id="searchTitleOrActor"
+              placeholder="Enter Film title or Actor name"
+              onChange={changed}
+            />
+          </InputGroup>
+        </Col>
+      </Form.Row>
+    </Form>
+  );
+};
+
+Search.defaultProps = defaultTypes;
 Search.propTypes = types;
 
-export default withHooks(Search);
+export default Search;
