@@ -1,30 +1,33 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import configureMockStore from "redux-mock-store";
+import thunk from "redux-thunk";
+
+import { entities } from "@test/mocks";
 
 import Component from "./index";
 
-import store from "@store";
-import { Provider } from "react-redux";
-
-const movie = {
-  title: "Young Frankenstein",
-  stars: "Gene Wilder, Kenneth Mars"
-};
-
 describe("Card component", () => {
-  const wrapper = mount(
-    <Provider store={store}>
-      <BrowserRouter>
-        <Component movie={movie} />
-      </BrowserRouter>
-    </Provider>
-  );
+  let wrapper;
+
+  beforeEach(() => {
+    const mockStore = configureMockStore([thunk])({});
+
+    wrapper = mount(
+      <Provider store={mockStore}>
+        <BrowserRouter>
+          <Component movie={entities[0]} />
+        </BrowserRouter>
+      </Provider>
+    );
+  });
 
   test("should render 2 titles", () => {
     const titleText = wrapper.find(".movie-title").text();
-    expect(titleText).toEqual("Title: Young Frankenstein");
+    expect(titleText).toEqual("Title: Test Movie 1");
 
     const starsText = wrapper.find(".movie-stars").text();
-    expect(starsText).toEqual("Stars: Gene Wilder, Kenneth Mars");
+    expect(starsText).toEqual("Stars: Star 1, Star 2");
   });
 });
