@@ -40,6 +40,7 @@ module.exports = {
       "@views": path.resolve(__dirname, "src/views"),
       "@store": path.resolve(__dirname, "src/store"),
       "@helpers": path.resolve(__dirname, "src/helpers"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
       "@assets": path.resolve(__dirname, "src/assets"),
       "@api": path.resolve(__dirname, "src/api")
     }

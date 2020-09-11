@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Pagination } from "react-bootstrap";
 
 import useHooks from "./useHooks";
@@ -8,6 +7,7 @@ import { defaultTypes, types } from "./types";
 function PaginationComponent(props) {
   const {
     paginationProps: {
+      isNoMovies,
       prevPage,
       currentPage,
       nextPage,
@@ -15,26 +15,46 @@ function PaginationComponent(props) {
       hasPrevPage,
       hasNextPage
     },
-    fetchMovies
+    handleMovies
   } = useHooks(props);
+
+  if (isNoMovies) {
+    return null;
+  }
 
   return (
     <Pagination>
-      {currentPage !== 1 && prevPage !== 1 && <Pagination.Item  onClick={() => fetchMovies(1)}>{1}</Pagination.Item>}
+      <Pagination.First onClick={() => handleMovies(1)} />
 
-      {hasPrevPage && <Pagination.Item onClick={() => fetchMovies(prevPage)}>{prevPage}</Pagination.Item>}
+      {currentPage !== 1 && prevPage !== 1 && (
+       <Pagination.Item onClick={() => handleMovies(1)}>{1}</Pagination.Item>
+      )}
 
-      {currentPage === lastPage && <Pagination.Ellipsis />}
+      {hasPrevPage && prevPage !== currentPage && (
+        <Pagination.Item onClick={() => handleMovies(prevPage)}>
+          {prevPage}
+        </Pagination.Item>
+      )}
+
+      {hasPrevPage && currentPage === lastPage && <Pagination.Ellipsis />}
 
       {currentPage && <Pagination.Item active>{currentPage}</Pagination.Item>}
 
       {hasNextPage && <Pagination.Ellipsis />}
 
-      {hasNextPage && <Pagination.Item onClick={() => fetchMovies(nextPage)}>{nextPage}</Pagination.Item>}
+      {hasNextPage && (
+        <Pagination.Item onClick={() => handleMovies(nextPage)}>
+          {nextPage}
+        </Pagination.Item>
+      )}
 
       {lastPage !== currentPage && lastPage !== nextPage && (
-        <Pagination.Item onClick={() => fetchMovies(lastPage)}>{lastPage}</Pagination.Item>
+        <Pagination.Item onClick={() => handleMovies(lastPage)}>
+          {lastPage}
+        </Pagination.Item>
       )}
+
+      <Pagination.Last onClick={() => handleMovies(lastPage)} />
     </Pagination>
   );
 }

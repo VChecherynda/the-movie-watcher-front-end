@@ -28,6 +28,9 @@ export const moviesSlice = createSlice({
     saveSearchWord: (state, action) => {
       state.searchWord = action.payload;
     },
+    setRedirectTo: (state, action) => {
+      state.redirectTo = action.payload;
+    },
     clearError: state => {
       state.error = "";
     },
@@ -73,10 +76,12 @@ export const moviesSlice = createSlice({
       state.error = "";
     },
     [createMovie.fulfilled]: (state, action) => {
+      const newEntities = state.entities.concat(action.payload);
+
       state.status = "succeeded";
-      state.redirectTo = "/";
+      state.redirectTo = "movies/1";
       state.error = "";
-      state.entities = state.entities.concat(action.payload);
+      state.entities = newEntities;
     },
     [createMovie.rejected]: (state, action) => {
       state.status = "failed";
@@ -87,11 +92,20 @@ export const moviesSlice = createSlice({
       state.error = "";
     },
     [deleteMovie.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.error = "";
-      state.entities = state.entities.filter(
+      const filteredEntities = state.entities.filter(
         entity => entity.id !== action.payload.id
       );
+
+      const redirectTo =
+        filteredEntities.length === 0
+          ? `movies/${state.pagination?.prevPage}`
+          : `movies/${state.pagination?.currentPage}`;
+
+      state.status = "succeeded";
+      state.redirectTo = redirectTo;
+
+      state.error = "";
+      state.entities = filteredEntities;
     },
     [deleteMovie.rejected]: (state, action) => {
       state.status = "failed";
@@ -101,10 +115,10 @@ export const moviesSlice = createSlice({
       state.status = "loading";
       state.error = "";
     },
-    [uploadMovieList.fulfilled]: (state, action) => {
+    [uploadMovieList.fulfilled]: state => {
       state.status = "succeeded";
       state.error = "";
-      state.entities = action.payload;
+      state.redirectTo = "movies/1";
     },
     [uploadMovieList.rejected]: (state, action) => {
       state.status = "failed";
@@ -114,8 +128,8 @@ export const moviesSlice = createSlice({
 });
 
 export const {
-  saveMovies,
   saveSearchWord,
+  setRedirectTo,
   clearError,
   clearStatus,
   clearRedirectTo

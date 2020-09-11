@@ -11,7 +11,9 @@ import { defaultTypes, types } from "./types";
 import useHooks from "./useHooks";
 
 const List = () => {
-  const { listProps } = useHooks();
+  const {
+    listProps: { isNoMovies, isNotFound, movies, pagination } = {}
+  } = useHooks();
 
   return (
     <>
@@ -31,13 +33,13 @@ const List = () => {
         </Row>
 
         <Row className="mb-4">
-          {listProps?.isNotFound ? (
+          {isNotFound ? (
             <Col sm={12}>
               <h1>Films not found</h1>
             </Col>
           ) : null}
 
-          {listProps?.movies.map(movie => (
+          {movies.map(movie => (
             <Col key={movie?.id} sm={4}>
               <Card movie={movie} />
             </Col>
@@ -46,10 +48,9 @@ const List = () => {
 
         <Row>
           <Col>
-            <Pagination pagination={listProps?.pagination} />
+            <Pagination isNoMovies={isNoMovies} pagination={pagination} />
           </Col>
         </Row>
-          
       </Container>
     </>
   );

@@ -1,16 +1,22 @@
 import { useEffect, useCallback } from "react";
-import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
 import { createMovie } from "@store/modules/movies/middleware";
-import { selectRedirectTo } from "@store/modules/movies/selectors";
+import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
+
+import useRedirect from "@hooks/useRedirect";
 
 const useHooks = () => {
-  const redirectTo = useSelector(selectRedirectTo);
-
-  const history = useHistory();
   const dispatch = useDispatch();
+
+  useRedirect();
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearStatus());
+      dispatch(clearRedirectTo());
+    };
+  }, [dispatch]);
 
   const handleCreate = useCallback(
     payload => {
@@ -18,17 +24,6 @@ const useHooks = () => {
     },
     [dispatch]
   );
-
-  useEffect(() => {
-    if (redirectTo) {
-      history.push(redirectTo);
-    }
-
-    return () => {
-      dispatch(clearStatus());
-      dispatch(clearRedirectTo());
-    };
-  }, [dispatch, history, redirectTo]);
 
   return {
     createProps: {

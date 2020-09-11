@@ -34,7 +34,7 @@ const Add = ({ isBtnDisabled = false, changed, upload, inputRef = {}, listLabel=
       </Col>
 
       <Col sm={2}>
-        <Link to="/create">
+        <Link to="/movie/create">
           <Button block>Add Movie</Button>
         </Link>
       </Col>

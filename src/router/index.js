@@ -10,10 +10,10 @@ import "@assets/styles/styles.scss";
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={List} exact />
-      <Route path="/create" component={Create} />
-      <Route path="/movie/:id" component={Movie} />
-      <Redirect from="*" to="/" />
+      <Route path="/movies/:page" component={List} exact />
+      <Route path="/movie/create" component={Create} exact />
+      <Route path="/movie/:id" component={Movie} exact />
+      <Redirect from="*" to="/movies/1" />
     </Switch>
   </BrowserRouter>
 );
