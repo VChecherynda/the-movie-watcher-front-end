@@ -1,11 +1,13 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import { uploadMovieList } from "@store/modules/movies/middleware";
 
 const DEFAULT_INPUT_FILE_MESSAGE = "Upload File ...";
 
-const useHooks = () => {
+import FormAdd from "@components/forms/add";
+
+const Add = () => {
   const [listLabel, setListLabel] = useState(DEFAULT_INPUT_FILE_MESSAGE);
   const [isBtnDisabled, setIsBtnDisabled] = useState(null);
 
@@ -46,15 +48,15 @@ const useHooks = () => {
     setListLabel(DEFAULT_INPUT_FILE_MESSAGE);
   };
 
-  return {
-    addProps: {
-      isBtnDisabled,
-      changed,
-      upload,
-      inputRef,
-      listLabel
-    }
-  };
+  return (
+    <FormAdd
+      isBtnDisabled={isBtnDisabled}
+      changed={changed}
+      upload={upload}
+      inputRef={inputRef}
+      listLabel={listLabel}
+    />
+  );
 };
 
-export default useHooks;
+export default Add;

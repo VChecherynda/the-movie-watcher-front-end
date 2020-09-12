@@ -10,7 +10,6 @@ import { defaultTypes, types } from "./types";
 import useHooks from "./useHooks";
 
 
-
 const Create = () => {
   const { createProps: { handleCreate } = {} } = useHooks();
 

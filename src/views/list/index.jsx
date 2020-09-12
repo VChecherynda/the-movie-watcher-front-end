@@ -2,10 +2,10 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 import Header from "@components/header";
-import Search from "@components/search";
-import Add from "@components/add";
+import Search from "./search";
+import Add from "./add";
 import Card from "@components/card";
-import Pagination from "@components/pagination";
+import Pagination from "./pagination";
 
 import { defaultTypes, types } from "./types";
 import useHooks from "./useHooks";

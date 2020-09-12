@@ -3,6 +3,13 @@ import { render, fireEvent, waitFor } from "@testing-library/react";
 
 import Form from "./index";
 
+const fakeMovie = {
+  title: "Title",
+  format: "VHS",
+  release: "1988",
+  stars: "Star 1, Star 2"
+};
+
 describe("Create view", () => {
   let form;
   let inputTitle;
@@ -24,19 +31,19 @@ describe("Create view", () => {
     btnSubmit = form.getByText("Add movie");
 
     fireEvent.change(inputTitle, {
-      target: { value: "Title" }
+      target: { value: fakeMovie.title }
     });
 
     fireEvent.change(inputRelease, {
-      target: { value: "1988" }
+      target: { value: fakeMovie.release }
     });
 
     fireEvent.change(inputFormat, {
-      target: { value: "VHS" }
+      target: { value: fakeMovie.format }
     });
 
     fireEvent.change(inputStars, {
-      target: { value: "Star 1, Star 2" }
+      target: { value: fakeMovie.stars }
     });
 
     fireEvent.click(btnSubmit);
@@ -44,7 +51,7 @@ describe("Create view", () => {
 
   test("should output values 'Title', '1988', 'VHS', 'Star 1, Star 2' after submit", async () => {
     await waitFor(() => {
-      expect(handleCreate).toHaveBeenCalled();
+      expect(handleCreate).toHaveBeenCalledTimes(1);
     });
   });
 });
