@@ -20,6 +20,8 @@ const useHooks = () => {
 
   const handleCreate = useCallback(
     payload => {
+      console.log("[payload]", payload);
+
       dispatch(createMovie(payload));
     },
     [dispatch]
