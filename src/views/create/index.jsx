@@ -15,7 +15,7 @@ import { defaultTypes, types } from "./types";
 import useHooks from "./useHooks";
 
 const Create = () => {
-  const { createProps } = useHooks();
+  const { createProps: { handleCreate } = {} } = useHooks();
 
   return (
     <>
@@ -34,7 +34,7 @@ const Create = () => {
           <Col>
             <Formik
               validationSchema={schemaMovie}
-              onSubmit={createProps.handleCreate}
+              onSubmit={handleCreate}
               initialValues={initialData}
             >
               {({
@@ -57,6 +57,7 @@ const Create = () => {
                             title={element.title}
                             name={element.name}
                             value={values[element.name]}
+                            placeholder={element.placeholder}
                             touched={touched[element.name]}
                             error={errors[element.name]}
                             changed={handleChange}
@@ -73,6 +74,7 @@ const Create = () => {
                             title={element.title}
                             name={element.name}
                             value={values[element.name]}
+                            placeholder={element.placeholder}
                             options={element.options}
                             touched={touched[element.name]}
                             error={errors[element.name]}

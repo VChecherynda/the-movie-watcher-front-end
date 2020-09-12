@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
-import { entities } from "@test/mocks";
+import { entities } from "@tests/mocks";
 
 import Component from "./index";
 

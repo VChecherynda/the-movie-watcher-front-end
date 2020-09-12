@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 
 import Component from "./index";
 
-import { entities } from "@test/mocks";
+import { entities } from "@tests/mocks";
 import { Provider } from "react-redux";
 
 describe("List view", () => {

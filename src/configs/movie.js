@@ -1,10 +1,10 @@
 export const videoFormats = ["VHS", "DVD", "Blu-Ray"];
 
 export const initialData = {
-  title: "Title",
-  release: "1987",
+  title: "",
+  release: "",
   format: videoFormats[0],
-  stars: "John"
+  stars: ""
 };
 
 export const formInputs = [
@@ -12,13 +12,15 @@ export const formInputs = [
     id: "movie-title",
     type: "text",
     title: "Title",
-    name: "title"
+    name: "title",
+    placeholder: "Enter title..."
   },
   {
     id: "movie-release",
     type: "text",
     title: "Release",
-    name: "release"
+    name: "release",
+    placeholder: "Enter release..."
   },
   {
     id: "movie-format",
@@ -31,6 +33,7 @@ export const formInputs = [
     id: "movie-stars",
     type: "text",
     title: "Stars",
-    name: "stars"
+    name: "stars",
+    placeholder: "Enter stars..."
   }
 ];

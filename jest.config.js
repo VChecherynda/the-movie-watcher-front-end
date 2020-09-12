@@ -1,12 +1,12 @@
 module.exports = {
   verbose: true,
-  setupFilesAfterEnv: ["<rootDir>/test/setupTests.js"],
+  setupFilesAfterEnv: ["<rootDir>/tests/setupTests.js"],
   transformIgnorePatterns: ["<rootDir>/node_modules/"],
   testMatch: ["**/?(*.)test.js"],
   moduleFileExtensions: ["js", "jsx"],
   moduleNameMapper: {
     "@components/?(.*)": "<rootDir>/src/components/$1",
-    "@test/?(.*)": "<rootDir>/test/$1",
+    "@tests/?(.*)": "<rootDir>/tests/$1",
     "@helpers/?(.*)": "<rootDir>/src/helpers/$1",
     "@validations/?(.*)": "<rootDir>/src/validations/$1",
     "@configs/?(.*)": "<rootDir>/src/configs/$1",

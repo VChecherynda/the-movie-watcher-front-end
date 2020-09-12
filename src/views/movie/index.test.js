@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 
 import Component from "./index";
 
-import { movie } from "@test/mocks";
+import { movie } from "@tests/mocks";
 import { Provider } from "react-redux";
 
 describe("Movie view", () => {
