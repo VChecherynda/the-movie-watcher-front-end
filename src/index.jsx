@@ -6,7 +6,7 @@ import Router from './router';
 import store from './store';
 import { Provider } from 'react-redux';
 
-import Modals from '@components/modals';
+import Modals from '@views/modals';
 
 render(
   <Provider store={store}>

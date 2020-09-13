@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectMovieCurrent } from "@store/modules/movies/selectors";
 import { fetchMovieCurrent } from "@store/modules/movies/middleware";
 
-const useHooks = () => {
+import View from "./view";
+
+const Movie = () => {
   const dispatch = useDispatch();
   const params = useParams();
 
@@ -19,7 +21,7 @@ const useHooks = () => {
     }
   }, [dispatch, currentId]);
 
-  return { movieCurrent };
+  return <View movie={movieCurrent} />;
 };
 
-export default useHooks;
+export default Movie;

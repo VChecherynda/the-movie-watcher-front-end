@@ -1,10 +1,12 @@
-import { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import { createMovie } from "@store/modules/movies/middleware";
 import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
 
 import useRedirect from "@hooks/useRedirect";
+
+import View from "./view";
 
 const useHooks = () => {
   const dispatch = useDispatch();
@@ -25,11 +27,7 @@ const useHooks = () => {
     [dispatch]
   );
 
-  return {
-    createProps: {
-      handleCreate
-    }
-  };
+  return <View handleCreate={handleCreate} />;
 };
 
 export default useHooks;
