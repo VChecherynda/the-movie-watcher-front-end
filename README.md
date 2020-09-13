@@ -6,8 +6,11 @@ node version < 14
 
 To start this app:
   1. Create .env ( for development ) files and set ASSET_PATH and API variables
-  2. npm install && npm start
-  
+  2. npm install 
+  3. npm start ( for unix systems )
+  4. npm start:windows
+  5. npm run test ( for testing )
+
 # Production build:
 
 To create build:
@@ -25,21 +28,27 @@ In this app we for bundle all our assets we use webpack ( dev / build .env )
   - prop-types ( for checking types which transmits into components )
   - formik ( for simplify input validation )
   - reselect ( simple selector library to make complex selector and compute derived data )
+  - enzyme ( testing utility for simplify testing react-component )
+  - @testing-library/react ( we need this lib for some special asynchronous methods )
+  - jest ( testing framework )
   ...
 
 # Structure:
 
 - views ( consist of implemenation of different domains, here i collect all logic )
   - view ( 1 unit, here we divide logic and mark-up for this we use hoc )
-    - view.js ( here we put mark-up )
+    - component
+      - index.js ( here I place logic for component )
+    - view.js ( here i connect all blocks )
+    - index.test.js ( for tests )
     - types ( here we put all props which we want to check and which transmits to the component )
-    - index.js ( this is custom hook where I put all logic )
+    - index.js ( here I place logic for view )
 
 - components ( block for constructing views, here i collect mostly dumb components 'mark-up' )
   - component ( 1 unit, here we divide logic and mark-up for this we use hoc )
-    - index.js ( here we put mark-up )
+    - index.js ( here I place mark-up )
+    - index.test.js ( for tests )
     - types ( here we put all props which we want to check and which transmits to the component )
-    - useHooks ( this is custom hook where I put all logic )
 
 - asstes ( for adding fonts / images / styles )
   - styles ( css / scss styles for views )
@@ -65,6 +74,10 @@ In this app we for bundle all our assets we use webpack ( dev / build .env )
     
 - validations
   - movie.js ( for validation, in this part we keep all logic for validation creation of the movie )
+
+- tests
+  - mocks.js ( different mocks for testing )
+  - setupTests.js ( settings for different methods and configure enzyme )
 
 index.html ( here we add all our main js / css files )
 index.jsx ( entry point for connect react to the our app )
