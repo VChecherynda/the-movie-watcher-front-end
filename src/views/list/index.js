@@ -25,8 +25,8 @@ const useHooks = () => {
   const filteredMovies = useSelector(selectFilteredMovies);
   const pagination = useSelector(selectPagination);
   const paginationTotal = pagination?.total;
-  const isNoMovies = paginationTotal === 0;
-  const isNotFound = searchedWord && filteredMovies.length === 0;
+  const isPaginationExsist = paginationTotal > 0;
+  const isNotFound = Boolean(searchedWord) && filteredMovies.length === 0;
 
   useEffect(() => {
     dispatch(fetchMovies(currentPage));
@@ -39,7 +39,7 @@ const useHooks = () => {
 
   return (
     <View
-      isNoMovies={isNoMovies}
+      isPaginationExsist={isPaginationExsist}
       isNotFound={isNotFound}
       movies={filteredMovies}
       pagination={pagination}

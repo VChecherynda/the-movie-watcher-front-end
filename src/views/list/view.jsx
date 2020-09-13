@@ -9,7 +9,7 @@ import Pagination from "./pagination";
 
 import { defaultTypes, types } from "./types";
 
-const List = ({ isNoMovies, isNotFound, movies, pagination }) => (
+const List = ({ isPaginationExsist, isNotFound, movies, pagination }) => (
   <>
     <Header />
 
@@ -40,11 +40,14 @@ const List = ({ isNoMovies, isNotFound, movies, pagination }) => (
         ))}
       </Row>
 
-      <Row>
-        <Col>
-          <Pagination isNoMovies={isNoMovies} pagination={pagination} />
-        </Col>
-      </Row>
+
+      {isPaginationExsist && (
+        <Row>
+          <Col>
+            <Pagination pagination={pagination} />
+          </Col>
+        </Row>
+      )}
     </Container>
   </>
 );

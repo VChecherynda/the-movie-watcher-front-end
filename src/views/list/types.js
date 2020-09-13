@@ -1,15 +1,15 @@
-import { string } from "prop-types";
+import { arrayOf, shape, bool } from "prop-types";
 
 export const defaultTypes = {
-  title: undefined,
-  release: undefined,
-  format: undefined,
-  stars: undefined
+  isPaginationExsist: undefined,
+  isNotFound: undefined,
+  movies: undefined,
+  pagination: undefined
 };
 
 export const types = {
-  title: string,
-  release: string,
-  format: string,
-  stars: string
+  isPaginationExsist: bool,
+  isNotFound: bool,
+  movies: arrayOf(shape({})),
+  pagination: shape({})
 };
