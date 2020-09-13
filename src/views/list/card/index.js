@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from "react";
+import React, { useMemo, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import {
@@ -7,7 +7,9 @@ import {
   setModalData
 } from "@store/modules/modals/reducer";
 
-const useHooks = ({ movie, ...rest }) => {
+import CardComponent from "@components/card";
+
+const Card = ({ movie }) => {
   const dispatch = useDispatch();
 
   const memoMovie = useMemo(() => movie, [movie]);
@@ -19,15 +21,12 @@ const useHooks = ({ movie, ...rest }) => {
     dispatch(setModalData({ id }));
   }, [dispatch, memoMovie]);
 
-  return {
-    movieProps: {
-      id: memoMovie?.id || "",
-      title: memoMovie?.title || "",
-      stars: memoMovie?.stars || "",
-      handleDeleteMovie
-    },
-    ...rest
-  };
+  return (
+    <CardComponent
+      memoMovie={memoMovie}
+      handleDeleteMovie={handleDeleteMovie}
+    />
+  );
 };
 
-export default useHooks;
+export default Card;

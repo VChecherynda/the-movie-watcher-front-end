@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { clearError } from "@store/modules/movies/reducer";
 import { selectError } from "@store/modules/movies/selectors";
 
-const useHooks = () => {
+import HeaderComponent from "@components/header";
+
+const Header = () => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
 
@@ -17,7 +19,7 @@ const useHooks = () => {
     }
   }, [dispatch, error]);
 
-  return { headerProps: { error } };
+  return <HeaderComponent error={error} />;
 };
 
-export default useHooks;
+export default Header;

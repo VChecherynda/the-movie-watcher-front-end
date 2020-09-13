@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-import Header from "@components/header";
+import Header from "./header";
 import FormMovie from "@components/forms/movie";
 
 import { defaultTypes, types } from "./types";

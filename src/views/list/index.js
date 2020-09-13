@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -11,6 +11,8 @@ import {
 } from "@store/modules/movies/selectors";
 
 import useRedirect from "@hooks/useRedirect";
+
+import View from "./view";
 
 const useHooks = () => {
   const dispatch = useDispatch();
@@ -35,9 +37,14 @@ const useHooks = () => {
     };
   }, [dispatch, paginationTotal, currentPage]);
 
-  return {
-    listProps: { isNoMovies, isNotFound, movies: filteredMovies, pagination }
-  };
+  return (
+    <View
+      isNoMovies={isNoMovies}
+      isNotFound={isNotFound}
+      movies={filteredMovies}
+      pagination={pagination}
+    />
+  );
 };
 
 export default useHooks;
