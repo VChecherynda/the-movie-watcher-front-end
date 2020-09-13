@@ -29,13 +29,13 @@ In this app we for bundle all our assets we use webpack ( dev / build .env )
 
 # Structure:
 
-- views ( consist of implemenation of different domains )
+- views ( consist of implemenation of different domains, here i collect all logic )
   - view ( 1 unit, here we divide logic and mark-up for this we use hoc )
-    - index.js ( here we put mark-up )
+    - view.js ( here we put mark-up )
     - types ( here we put all props which we want to check and which transmits to the component )
-    - useHooks ( this is custom hook where I put all logic )
+    - index.js ( this is custom hook where I put all logic )
 
-- components ( block for constructing views )
+- components ( block for constructing views, here i collect mostly dumb components 'mark-up' )
   - component ( 1 unit, here we divide logic and mark-up for this we use hoc )
     - index.js ( here we put mark-up )
     - types ( here we put all props which we want to check and which transmits to the component )
