@@ -3,7 +3,7 @@ import configureMockStore from "redux-mock-store";
 import { BrowserRouter } from "react-router-dom";
 import thunk from "redux-thunk";
 
-import Component from "./index";
+import Component from "./view";
 
 import { entities } from "@tests/mocks";
 import { Provider } from "react-redux";

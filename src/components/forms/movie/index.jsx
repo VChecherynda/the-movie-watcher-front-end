@@ -1,14 +1,13 @@
 import React from "react";
 import { Formik } from "formik";
 
-import {  Col, Form, Button } from "react-bootstrap";
+import { Col, Form, Button } from "react-bootstrap";
 
 import Input from "@components/forms/input";
 import Select from "@components/forms/select";
 
 import schemaMovie from "@validations/movie";
 import { initialData, formInputs } from "@configs/movie";
-
 
 const Movie = ({ onSubmit }) => (
   <Formik

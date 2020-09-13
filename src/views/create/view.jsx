@@ -6,7 +6,7 @@ import Header from "./header";
 import FormMovie from "@components/forms/movie";
 import Back from "@components/buttons/back";
 
-import { defaultTypes, types } from "../../components/list/movie/types";
+import { defaultTypes, types } from "./types";
 
 const Create = ({ handleCreate }) => (
   <>
