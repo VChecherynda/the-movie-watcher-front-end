@@ -3,7 +3,7 @@ import configureMockStore from "redux-mock-store";
 import { BrowserRouter } from "react-router-dom";
 import thunk from "redux-thunk";
 
-import Component from "../../../views/movie/view";
+import Component from "./index";
 
 import { movie } from "@tests/mocks";
 import { Provider } from "react-redux";
@@ -21,7 +21,7 @@ describe("Movie view", () => {
     wrapper = mount(
       <Provider store={mockStore}>
         <BrowserRouter>
-          <Component />
+          <Component movie={movie} />
         </BrowserRouter>
       </Provider>
     );

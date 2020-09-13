@@ -7,6 +7,7 @@ module.exports = {
   moduleNameMapper: {
     "@components/?(.*)": "<rootDir>/src/components/$1",
     "@tests/?(.*)": "<rootDir>/tests/$1",
+    "@views/?(.*)": "<rootDir>/views/$1",
     "@helpers/?(.*)": "<rootDir>/src/helpers/$1",
     "@validations/?(.*)": "<rootDir>/src/validations/$1",
     "@configs/?(.*)": "<rootDir>/src/configs/$1",

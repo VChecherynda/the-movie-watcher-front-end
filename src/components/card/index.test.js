@@ -17,7 +17,7 @@ describe("Card component", () => {
     wrapper = mount(
       <Provider store={mockStore}>
         <BrowserRouter>
-          <Component movie={entities[0]} />
+          <Component memoMovie={entities[0]} />
         </BrowserRouter>
       </Provider>
     );

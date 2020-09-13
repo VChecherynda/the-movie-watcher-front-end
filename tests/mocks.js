@@ -23,3 +23,12 @@ export const movie = {
   format: "VHS",
   stars: "Star 1, Star 2"
 };
+
+export const pagination = {
+  prevPage: 1,
+  currentPage: 2,
+  nextPage: 3,
+  lastPage: 5,
+  hasPreviousPage: true,
+  hasNextPage: true
+};
