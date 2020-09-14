@@ -2,7 +2,7 @@
 
 # Install:
 
-node version < 14
+node version v12.16.2
 
 To start this app:
   1. Create .env ( for development ) files and set ASSET_PATH and API variables
