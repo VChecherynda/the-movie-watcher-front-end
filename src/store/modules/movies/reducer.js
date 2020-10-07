@@ -182,7 +182,7 @@ function movieReducer(state = initialState, action) {
       return rejected(state, action);
 
     default:
-      return initialState;
+      return state;
   }
 }
 
