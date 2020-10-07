@@ -73,6 +73,7 @@ function saveMoviesAfterDelete(state, action) {
   const filteredEntities = state.entities.filter(
     (entity) => entity.id !== action.payload.id
   );
+
   const redirectTo =
     filteredEntities.length === 0
       ? `movies/${state.pagination?.prevPage}`

@@ -6,7 +6,7 @@ export default {
   //FETCH
   fetchMovies: createFetchActions(ACTION_TYPES.FETCH_MOVIES),
   fetchMovieCurrent: createFetchActions(ACTION_TYPES.FETCH_MOVIE_CURRENT),
-  uploadMovies: createFetchActions(ACTION_TYPES.UPLOAD_MOVIE),
+  uploadMovies: createFetchActions(ACTION_TYPES.UPLOAD_MOVIES),
   createMovie: createFetchActions(ACTION_TYPES.CREATE_MOVIE),
   deleteMovie: createFetchActions(ACTION_TYPES.DELETE_MOVIE),
   //COMMON

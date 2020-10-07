@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { setRedirectTo } from "@store/modules/movies/reducer";
+import actions from "@store/modules/movies/actions";
 import { fetchMovies } from "@store/modules/movies/middleware";
 
 import PaginationComponent from "@components/pagination";
@@ -13,7 +13,7 @@ const Pagination = ({ isNoMovies, pagination }) => {
 
   const handleMovies = page => {
     dispatch(fetchMovies(page));
-    // dispatch(setRedirectTo(`movies/${page}`));
+    dispatch(actions.setRedirectTo(`movies/${page}`));
   };
 
   return (

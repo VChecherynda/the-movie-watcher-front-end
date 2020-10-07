@@ -29,15 +29,16 @@ const useHooks = () => {
   const isNotFound = Boolean(searchedWord) && filteredMovies.length === 0;
 
   useEffect(() => {
-    dispatch(fetchMovies(currentPage));
-
     const { clearStatus, clearRedirectTo } = actions;
+
+
+    dispatch(fetchMovies(currentPage));
 
     return () => {
       dispatch(clearStatus());
       dispatch(clearRedirectTo());
     };
-  }, [dispatch]);
+  }, [dispatch, currentPage]);
 
   return (
     <View
