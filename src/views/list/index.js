@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
+// import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
 import { fetchMovies } from "@store/modules/movies/middleware";
 import {
   selectSearchWord,
@@ -31,11 +31,11 @@ const useHooks = () => {
   useEffect(() => {
     dispatch(fetchMovies(currentPage));
 
-    return () => {
-      dispatch(clearStatus());
-      dispatch(clearRedirectTo());
-    };
-  }, [dispatch, paginationTotal, currentPage]);
+    // return () => {
+    //   dispatch(clearStatus());
+    //   dispatch(clearRedirectTo());
+    // };
+  }, [dispatch]);
 
   return (
     <View

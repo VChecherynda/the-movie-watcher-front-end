@@ -13,7 +13,7 @@ const Pagination = ({ isNoMovies, pagination }) => {
 
   const handleMovies = page => {
     dispatch(fetchMovies(page));
-    dispatch(setRedirectTo(`movies/${page}`));
+    // dispatch(setRedirectTo(`movies/${page}`));
   };
 
   return (

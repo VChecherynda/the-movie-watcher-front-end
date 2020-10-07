@@ -1,4 +1,4 @@
-import * as actions from "../actions";
+import actions from "../actions";
 import initialState from "../reducer/intialState";
 
 function pending(state) {
@@ -9,7 +9,7 @@ function pending(state) {
   };
 }
 
-function rejected(state) {
+function rejected(state, action) {
   return {
     ...state,
     status: "failed",
@@ -73,7 +73,7 @@ function saveMoviesAfterDelete(state, action) {
   };
 }
 
-function saveMoviesAfterUpload(state, action) {
+function saveMoviesAfterUpload(state) {
   const stateFulfilled = fulfilled(state);
 
   return {
@@ -121,53 +121,53 @@ function movieReducer(state = initialState, action) {
 
     // Fetch Movies
     case [actions.fetchMovies.pending]:
-      pending(state);
+      return pending(state);
 
     case [actions.fetchMovies.fulfilled]:
-      saveMovies(state, action);
+      return saveMovies(state, action);
 
     case [actions.fetchMovies.rejected]:
-      rejected(state);
+      return rejected(state);
 
     // Fetch Current Movie
     case [actions.fetchMovieCurrent.pending]:
-      pending(state);
+      return pending(state);
 
     case [actions.fetchMovieCurrent.fulfilled]:
-      saveCurrentMovie(state, action);
+      return saveCurrentMovie(state, action);
 
     case [actions.fetchMovieCurrent.rejected]:
-      rejected(state);
+      return rejected(state);
 
     // Create Movie
     case [actions.createMovie.pending]:
-      pending(state);
+      return pending(state);
 
     case [actions.createMovie.fulfilled]:
-      saveMovieAfterCreate(state, action);
+      return saveMovieAfterCreate(state, action);
 
     case [actions.createMovie.rejected]:
-      rejected(state);
+      return rejected(state);
 
     // Delete new Movie
     case [actions.deleteMovie.pending]:
-      pending(state);
+      return pending(state);
 
-    case [actions.createMovie.fulfilled]:
-      saveMoviesAfterDelete(state, action);
+    // case [actions.createMovie.fulfilled]:
+    //   return saveMoviesAfterDelete(state, action);
 
-    case [actions.createMovie.rejected]:
-      rejected(state);
+    // case [actions.createMovie.rejected]:
+    //   return rejected(state);
 
     // Upload Movies
     case [actions.uploadMovies.pending]:
-      pending(state);
+      return pending(state);
 
     case [actions.uploadMovies.fulfilled]:
-      saveMoviesAfterUpload(state, action);
+      return saveMoviesAfterUpload(state, action);
 
     case [actions.uploadMovies.rejected]:
-      rejected(state);
+      return rejected(state);
 
     default:
       return initialState;

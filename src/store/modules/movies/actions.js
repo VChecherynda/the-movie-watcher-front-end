@@ -3,21 +3,21 @@ import * as ACTION_TYPES from "./types";
 function createFetchActions(type) {
   function pending(payload) {
     return {
-      type: `${type}/pending`,
+      type: type.PENDING,
       payload
     };
   }
 
   function success(payload) {
     return {
-      type: `${type}/success`,
+      type: type.SUCCESS,
       payload
     };
   }
 
   function error(payload) {
     return {
-      type: `${type}/error`,
+      type: type.ERROR,
       payload
     };
   }
@@ -35,6 +35,7 @@ function createAction(type, payload) {
 export default {
   //FETCH
   fetchMovies: createFetchActions(ACTION_TYPES.FETCH_MOVIES),
+  fetchMovieCurrent: createFetchActions(ACTION_TYPES.FETCH_MOVIE_CURRENT),
   uploadMovies: createFetchActions(ACTION_TYPES.UPLOAD_MOVIE),
   createMovie: createFetchActions(ACTION_TYPES.CREATE_MOVIE),
   deleteMovie: createFetchActions(ACTION_TYPES.DELETE_MOVIE),
