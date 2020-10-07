@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { clearError } from "@store/modules/movies/reducer";
+import { clearError } from "@store/modules/movies/actions";
 import { selectError } from "@store/modules/movies/selectors";
 
 import HeaderComponent from "@components/header";

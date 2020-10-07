@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import actions from "@store/modules/movies/actions";
+import { clearStatus, clearRedirectTo } from "@store/modules/movies/actions";
 import { fetchMovies } from "@store/modules/movies/middleware";
 import {
   selectSearchWord,
@@ -29,9 +29,6 @@ const useHooks = () => {
   const isNotFound = Boolean(searchedWord) && filteredMovies.length === 0;
 
   useEffect(() => {
-    const { clearStatus, clearRedirectTo } = actions;
-
-
     dispatch(fetchMovies(currentPage));
 
     return () => {

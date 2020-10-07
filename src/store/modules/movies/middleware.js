@@ -1,5 +1,5 @@
 import client from "@api/client";
-import actions from "./actions";
+import * as actions from "./actions";
 
 export function fetchMovies(page) {
   return async function (dispatch) {

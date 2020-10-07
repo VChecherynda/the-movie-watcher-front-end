@@ -15,6 +15,7 @@ const Header = () => {
       const timer = setTimeout(() => {
         dispatch(clearError());
       }, 3000);
+
       return () => clearTimeout(timer);
     }
   }, [dispatch, error]);

@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import { createMovie } from "@store/modules/movies/middleware";
-import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
+import { clearStatus, clearRedirectTo } from "@store/modules/movies/actions";
 
 import useRedirect from "@hooks/useRedirect";
 
@@ -14,10 +14,10 @@ const useHooks = () => {
   useRedirect();
 
   useEffect(() => {
-    // return () => {
-    //   dispatch(clearStatus());
-    //   dispatch(clearRedirectTo());
-    // };
+    return () => {
+      dispatch(clearStatus());
+      dispatch(clearRedirectTo());
+    };
   }, [dispatch]);
 
   const handleCreate = useCallback(

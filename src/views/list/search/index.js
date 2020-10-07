@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import { saveSearchWord } from "@store/modules/movies/reducer";
+import { saveSearchWord } from "@store/modules/movies/actions";
 
 import FormSearch from "@components/forms/search";
 
