@@ -14,10 +14,10 @@ const useHooks = () => {
   useRedirect();
 
   useEffect(() => {
-    return () => {
-      dispatch(clearStatus());
-      dispatch(clearRedirectTo());
-    };
+    // return () => {
+    //   dispatch(clearStatus());
+    //   dispatch(clearRedirectTo());
+    // };
   }, [dispatch]);
 
   const handleCreate = useCallback(

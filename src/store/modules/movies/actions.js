@@ -1,36 +1,6 @@
 import * as ACTION_TYPES from "./types";
 
-function createFetchActions(type) {
-  function pending(payload) {
-    return {
-      type: type.PENDING,
-      payload
-    };
-  }
-
-  function success(payload) {
-    return {
-      type: type.SUCCESS,
-      payload
-    };
-  }
-
-  function error(payload) {
-    return {
-      type: type.ERROR,
-      payload
-    };
-  }
-
-  return { pending, success, error };
-}
-
-function createAction(type, payload) {
-  return {
-    type,
-    payload
-  };
-}
+import { createFetchActions, createAction } from '@helpers/actions'
 
 export default {
   //FETCH

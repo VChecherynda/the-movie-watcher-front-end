@@ -1,15 +1,12 @@
 import React, { useMemo, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import {
-  showModal,
-  setModalType,
-  setModalData
-} from "@store/modules/modals/reducer";
-
+import actions from "@store/modules/modals/actions";
 import CardComponent from "@components/card";
 
 const Card = ({ movie }) => {
+  const { showModal, setModalType, setModalData } = actions;
+
   const dispatch = useDispatch();
 
   const memoMovie = useMemo(() => movie, [movie]);

@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { showModal, clearModal } from "@store/modules/modals/reducer";
+import actions from "@store/modules/modals/actions";
 import { selectModalShow } from "@store/modules/modals/selectors";
 
 const useModals = () => {
+  const { showModal, clearModal } = actions;
   const dispatch = useDispatch();
 
   const isVisible = useSelector(selectModalShow);

@@ -1,12 +1,15 @@
 import {
+  SAVE_SEARCH_WORD,
+  SET_REDIRECT_TO,
   CREATE_MOVIE,
   DELETE_MOVIE,
   FETCH_MOVIES,
   FETCH_MOVIE_CURRENT,
-  UPLOAD_MOVIES
+  UPLOAD_MOVIES,
+  CLEAR_ERROR,
+  CLEAR_STATUS,
+  CLEAR_REDIRECT_TO,
 } from "./types";
-
-import actions from "./actions";
 
 import initialState from "./intialState";
 
@@ -65,22 +68,22 @@ function saveMovieAfterCreate(state, action) {
   };
 }
 
-// function saveMoviesAfterDelete(state, action) {
-//   const stateFulfilled = fulfilled(state);
-//   const filteredEntities = state.entities.filter(
-//     (entity) => entity.id !== action.payload.id
-//   );
-//   const redirectTo =
-//     filteredEntities.length === 0
-//       ? `movies/${state.pagination?.prevPage}`
-//       : `movies/${state.pagination?.currentPage}`;
+function saveMoviesAfterDelete(state, action) {
+  const stateFulfilled = fulfilled(state);
+  const filteredEntities = state.entities.filter(
+    (entity) => entity.id !== action.payload.id
+  );
+  const redirectTo =
+    filteredEntities.length === 0
+      ? `movies/${state.pagination?.prevPage}`
+      : `movies/${state.pagination?.currentPage}`;
 
-//   return {
-//     ...stateFulfilled,
-//     entities: filteredEntities,
-//     redirectTo,
-//   };
-// }
+  return {
+    ...stateFulfilled,
+    entities: filteredEntities,
+    redirectTo,
+  };
+}
 
 function saveMoviesAfterUpload(state) {
   const stateFulfilled = fulfilled(state);
@@ -98,35 +101,35 @@ function saveMoviesAfterUpload(state) {
 function movieReducer(state = initialState, action) {
   switch (action.type) {
     // Fetch Movies
-    // case [actions.saveSearchWord]:
-    //   return {
-    //     ...state,
-    //     searchWord: action.payload,
-    //   };
+    case SAVE_SEARCH_WORD:
+      return {
+        ...state,
+        searchWord: action.payload,
+      };
 
-    // case [actions.setRedirectTo]:
-    //   return {
-    //     ...state,
-    //     redirectTo: action.payload,
-    //   };
+    case SET_REDIRECT_TO:
+      return {
+        ...state,
+        redirectTo: action.payload,
+      };
 
-    // case [actions.clearError]:
-    //   return {
-    //     ...state,
-    //     error: "",
-    //   };
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        error: "",
+      };
 
-    // case [actions.clearStatus]:
-    //   return {
-    //     ...state,
-    //     status: "",
-    //   };
+    case CLEAR_STATUS:
+      return {
+        ...state,
+        status: "",
+      };
 
-    // case [actions.clearRedirectTo]:
-    //   return {
-    //     ...state,
-    //     redirectTo: "",
-    //   };
+    case CLEAR_REDIRECT_TO:
+      return {
+        ...state,
+        redirectTo: "",
+      };
 
     // Fetch Movies
     case FETCH_MOVIES.PENDING:
@@ -136,7 +139,7 @@ function movieReducer(state = initialState, action) {
       return saveMovies(state, action);
 
     case FETCH_MOVIES.ERROR:
-      return rejected(state);
+      return rejected(state, action);
 
     // Fetch Current Movie
     case FETCH_MOVIE_CURRENT.PENDING:
@@ -146,7 +149,7 @@ function movieReducer(state = initialState, action) {
       return saveCurrentMovie(state, action);
 
     case FETCH_MOVIE_CURRENT.ERROR:
-      return rejected(state);
+      return rejected(state, action);
 
     // Create Movie
     case CREATE_MOVIE.PENDING:
@@ -156,7 +159,7 @@ function movieReducer(state = initialState, action) {
       return saveMovieAfterCreate(state, action);
 
     case CREATE_MOVIE.ERROR:
-      return rejected(state);
+      return rejected(state, action);
 
     // Delete Movie
     case DELETE_MOVIE.PENDING:
@@ -166,7 +169,7 @@ function movieReducer(state = initialState, action) {
       return saveMoviesAfterDelete(state, action);
 
     case DELETE_MOVIE.ERROR:
-      return rejected(state);
+      return rejected(state, action);
 
     // Upload Movies
     case UPLOAD_MOVIES.PENDING:
@@ -176,7 +179,7 @@ function movieReducer(state = initialState, action) {
       return saveMoviesAfterUpload(state, action);
 
     case UPLOAD_MOVIES.ERROR:
-      return rejected(state);
+      return rejected(state, action);
 
     default:
       return initialState;

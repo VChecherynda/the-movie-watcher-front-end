@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-// import { clearStatus, clearRedirectTo } from "@store/modules/movies/reducer";
+import actions from "@store/modules/movies/actions";
 import { fetchMovies } from "@store/modules/movies/middleware";
 import {
   selectSearchWord,
   selectFilteredMovies,
-  selectPagination
+  selectPagination,
 } from "@store/modules/movies/selectors";
 
 import useRedirect from "@hooks/useRedirect";
@@ -31,10 +31,12 @@ const useHooks = () => {
   useEffect(() => {
     dispatch(fetchMovies(currentPage));
 
-    // return () => {
-    //   dispatch(clearStatus());
-    //   dispatch(clearRedirectTo());
-    // };
+    const { clearStatus, clearRedirectTo } = actions;
+
+    return () => {
+      dispatch(clearStatus());
+      dispatch(clearRedirectTo());
+    };
   }, [dispatch]);
 
   return (

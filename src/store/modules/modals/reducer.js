@@ -1,43 +1,48 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  SHOW_MODAL,
+  SET_MODAL_TYPE,
+  SET_REDIRECT_TO,
+  SET_MODAL_DATA,
+  CLEAR_MODAL,
+} from "./types";
 
-const initialState = {
-  show: false,
-  type: "",
-  redirectTo: "",
-  data: {}
-};
+import initialState from "./initialState";
 
-// Under hood reducers uses immer.js library for writing
-// brand new immutable state based on changes
+function modalReducer(state = initialState, action) {
+  switch (action.type) {
+    case SHOW_MODAL:
+      return {
+        ...state,
+        show: action.payload,
+      };
 
-export const modalsSlice = createSlice({
-  name: "modals",
-  initialState,
-  reducers: {
-    showModal: (state, action) => {
-      state.show = action.payload;
-    },
-    setModalType: (state, action) => {
-      state.type = action.payload;
-    },
-    setRedirectTo: (state, action) => {
-      state.redirectTo = action.payload;
-    },
-    setModalData: (state, action) => {
-      state.data = action.payload;
-    },
-    clearModal: () => {
+    case SET_MODAL_TYPE:
+      return {
+        ...state,
+        type: action.payload,
+      };
+
+    case SET_REDIRECT_TO:
+      return {
+        ...state,
+        redirectTo: action.payload,
+      };
+
+    case SET_MODAL_DATA:
+      return {
+        ...state,
+        data: action.payload,
+      };
+
+    case CLEAR_MODAL:
+      return {
+        ...state,
+        data: action.payload,
+      };
+
+    default:
       return initialState;
-    }
   }
-});
+}
 
-export const {
-  showModal,
-  setModalType,
-  setRedirectTo,
-  setModalData,
-  clearModal
-} = modalsSlice.actions;
-
-export default modalsSlice.reducer;
+export default modalReducer;
