@@ -1,26 +1,16 @@
 import {
   SAVE_SEARCH_WORD,
-  SET_REDIRECT_TO,
   CREATE_MOVIE,
   DELETE_MOVIE,
   MOVIES_RESPONSE,
   MOVIES_ERROR,
-  FETCH_MOVIE_CURRENT,
+  MOVIE_CURRENT_RESPONSE,
+  MOVIE_CURRENT_ERROR,
   UPLOAD_MOVIES,
   CLEAR_ERROR,
-  CLEAR_STATUS,
-  CLEAR_REDIRECT_TO,
 } from "./types";
 
 import initialState from "./intialState";
-
-function pending(state) {
-  return {
-    ...state,
-    status: "loading",
-    error: "",
-  };
-}
 
 function rejected(state, action) {
   return {
@@ -50,11 +40,10 @@ function saveMovies(state, action) {
 }
 
 function saveCurrentMovie(state, action) {
-  const stateFulfilled = fulfilled(state);
-
   return {
-    ...stateFulfilled,
+    ...state,
     current: action.payload,
+    error: "",
   };
 }
 
@@ -109,28 +98,10 @@ function movieReducer(state = initialState, action) {
         searchWord: action.payload,
       };
 
-    case SET_REDIRECT_TO:
-      return {
-        ...state,
-        redirectTo: action.payload,
-      };
-
     case CLEAR_ERROR:
       return {
         ...state,
         error: "",
-      };
-
-    case CLEAR_STATUS:
-      return {
-        ...state,
-        status: "",
-      };
-
-    case CLEAR_REDIRECT_TO:
-      return {
-        ...state,
-        redirectTo: "",
       };
 
     // Movies
@@ -141,19 +112,13 @@ function movieReducer(state = initialState, action) {
       return rejected(state, action);
 
     // Fetch Current Movie
-    case FETCH_MOVIE_CURRENT.PENDING:
-      return pending(state);
-
-    case FETCH_MOVIE_CURRENT.SUCCESS:
+    case MOVIE_CURRENT_RESPONSE:
       return saveCurrentMovie(state, action);
 
-    case FETCH_MOVIE_CURRENT.ERROR:
+    case MOVIE_CURRENT_ERROR:
       return rejected(state, action);
 
     // Create Movie
-    case CREATE_MOVIE.PENDING:
-      return pending(state);
-
     case CREATE_MOVIE.SUCCESS:
       return saveMovieAfterCreate(state, action);
 
@@ -161,9 +126,6 @@ function movieReducer(state = initialState, action) {
       return rejected(state, action);
 
     // Delete Movie
-    case DELETE_MOVIE.PENDING:
-      return pending(state);
-
     case DELETE_MOVIE.SUCCESS:
       return saveMoviesAfterDelete(state, action);
 
@@ -171,9 +133,6 @@ function movieReducer(state = initialState, action) {
       return rejected(state, action);
 
     // Upload Movies
-    case UPLOAD_MOVIES.PENDING:
-      return pending(state);
-
     case UPLOAD_MOVIES.SUCCESS:
       return saveMoviesAfterUpload(state, action);
 

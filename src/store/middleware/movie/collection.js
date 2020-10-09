@@ -1,7 +1,7 @@
 import {
   FETCH_MOVIES,
   FETCH_MOVIES_SUCCESS,
-  FETCH_MOVIES_ERROR
+  FETCH_MOVIES_ERROR,
 } from "@store/modules/movies/types";
 
 import {
@@ -35,14 +35,14 @@ export const processMoviesCollection = ({ dispatch }) => (next) => (action) => {
   next(action);
 
   if (action.type === FETCH_MOVIES_SUCCESS) {
-    dispatch(moviesResponse(action));
+    dispatch(moviesResponse(action.payload));
     dispatch(hideSpinner());
   }
 
   if (action.type === FETCH_MOVIES_ERROR) {
-    dispatch(moviesError(action));
+    dispatch(moviesError(action.payload));
     dispatch(hideSpinner());
   }
 };
 
-export const moviesMiddleware = [getMoviesCollection, processMoviesCollection];
+export default [getMoviesCollection, processMoviesCollection];

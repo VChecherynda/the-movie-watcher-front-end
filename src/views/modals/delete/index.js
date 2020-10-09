@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { deleteMovie } from "@store/modules/movies/middleware";
+import { movieDelete } from "@store/modules/movies/actions";
 import { selectModalData } from "@store/modules/modals/selectors";
 
 import useModals from "@hooks/useModal";
@@ -15,7 +15,7 @@ const Delete = () => {
   const { isVisible, showModal } = useModals();
 
   const save = () => {
-    dispatch(deleteMovie(modalData.id));
+    dispatch(movieDelete(modalData.id));
     showModal(false);
   };
 

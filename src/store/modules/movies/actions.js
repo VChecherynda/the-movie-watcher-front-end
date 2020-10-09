@@ -2,25 +2,54 @@ import * as ACTION_TYPES from "./types";
 
 import { createFetchActions, createAction } from "@helpers/actions";
 
-//FETCH
+// COLLECTION
 export const fetchMovies = (page) => ({
   type: ACTION_TYPES.FETCH_MOVIES,
   payload: page,
 });
 
-export const moviesResponse = (action) => ({
+export const moviesResponse = (items) => ({
   type: ACTION_TYPES.MOVIES_RESPONSE,
-  payload: action.payload,
+  payload: items,
 });
 
-export const moviesError = (action) => ({
+export const moviesError = (error) => ({
   type: ACTION_TYPES.MOVIES_RESPONSE,
-  payload: action.payload,
+  payload: error,
 });
 
-export const fetchMovieCurrent = createFetchActions(
-  ACTION_TYPES.FETCH_MOVIE_CURRENT
-);
+// CURRENT
+export const fetchMovieCurrent = (id) => ({
+  type: ACTION_TYPES.FETCH_MOVIE_CURRENT,
+  payload: id,
+});
+
+export const movieCurrentResponse = (movie) => ({
+  type: ACTION_TYPES.MOVIE_CURRENT_RESPONSE,
+  payload: movie,
+});
+
+export const movieCurrentError = (error) => ({
+  type: ACTION_TYPES.MOVIE_CURRENT_ERROR,
+  payload: error,
+});
+
+// DELETE
+export const movieDelete = (id) => ({
+  type: ACTION_TYPES.FETCH_MOVIE_DELETE,
+  payload: id,
+});
+
+export const movieDeleteResponse = (movie) => ({
+  type: ACTION_TYPES.FETCH_MOVIE_DELETE_RESPONSE,
+  payload: movie,
+});
+
+export const movieDeleteError = (error) => ({
+  type: ACTION_TYPES.FETCH_MOVIE_DELETE_ERROR,
+  payload: error,
+});
+
 export const uploadMovies = createFetchActions(ACTION_TYPES.UPLOAD_MOVIES);
 export const createMovie = createFetchActions(ACTION_TYPES.CREATE_MOVIE);
 export const deleteMovie = createFetchActions(ACTION_TYPES.DELETE_MOVIE);

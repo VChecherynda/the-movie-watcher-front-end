@@ -1,6 +1,7 @@
 import { makeFetchingTypes } from '@helpers/types';
 
-// FETCHING
+// MOVIES
+
 export const FETCH_MOVIES = "[movies] fetch";
 
 export const FETCH_MOVIES_SUCCESS = "[movies] fetch success";
@@ -11,10 +12,31 @@ export const MOVIES_RESPONSE = "[movies] response";
 
 export const MOVIES_ERROR = "[movies] error";
 
+// MOVIE CURRENT
 
-export const UPDATE_MOVIES = makeFetchingTypes("[movies] update");
+export const FETCH_MOVIE_CURRENT = "[movie-current] fetch";
 
-export const FETCH_MOVIE_CURRENT = makeFetchingTypes("fetchMovieCurrent");
+export const FETCH_MOVIE_CURRENT_SUCCESS = "[movie-current] fetch success";
+
+export const FETCH_MOVIE_CURRENT_ERROR = "[movie-current] fetch error";
+
+export const MOVIE_CURRENT_RESPONSE = "[movie-current] response";
+
+export const MOVIE_CURRENT_ERROR = "[movie-current] error";
+
+// MOVIE DELETE
+
+export const FETCH_MOVIE_DELETE = "[movie-delete] fetch";
+
+export const FETCH_MOVIE_DELETE_SUCCESS = "[movie-delete] fetch success";
+
+export const FETCH_MOVIE_DELETE_ERROR = "[movie-delete] fetch error";
+
+export const MOVIE_DELETE_RESPONSE = "[movie-delete] response";
+
+export const MOVIE_DELETE_ERROR = "[movie-delete] error";
+
+// MOVIE CREATE
 
 export const CREATE_MOVIE = makeFetchingTypes("createMovie");
 

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectMovieCurrent } from "@store/modules/movies/selectors";
-import { fetchMovieCurrent } from "@store/modules/movies/middleware";
+import { fetchMovieCurrent } from "@store/modules/movies/actions";
 
 import View from "./view";
 

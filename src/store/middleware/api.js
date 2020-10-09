@@ -24,4 +24,4 @@ export const api = ({ dispatch }) => (next) => (action) => {
   return next(action);
 };
 
-export const apiMiddleware = [api];
+export default api;
