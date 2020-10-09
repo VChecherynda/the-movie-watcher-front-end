@@ -34,6 +34,22 @@ export const movieCurrentError = (error) => ({
   payload: error,
 });
 
+// CREATE
+export const movieCreate = (id) => ({
+  type: ACTION_TYPES.FETCH_MOVIE_CREATE,
+  payload: id,
+});
+
+export const movieCreateResponse = (movie) => ({
+  type: ACTION_TYPES.MOVIE_CREATE_RESPONSE,
+  payload: movie,
+});
+
+export const movieCreateError = (error) => ({
+  type: ACTION_TYPES.MOVIE_CREATE_ERROR,
+  payload: error,
+});
+
 // DELETE
 export const movieDelete = (id) => ({
   type: ACTION_TYPES.FETCH_MOVIE_DELETE,
@@ -41,21 +57,18 @@ export const movieDelete = (id) => ({
 });
 
 export const movieDeleteResponse = (movie) => ({
-  type: ACTION_TYPES.FETCH_MOVIE_DELETE_RESPONSE,
+  type: ACTION_TYPES.MOVIE_DELETE_RESPONSE,
   payload: movie,
 });
 
 export const movieDeleteError = (error) => ({
-  type: ACTION_TYPES.FETCH_MOVIE_DELETE_ERROR,
+  type: ACTION_TYPES.MOVIE_DELETE_ERROR,
   payload: error,
 });
 
-export const uploadMovies = createFetchActions(ACTION_TYPES.UPLOAD_MOVIES);
-export const createMovie = createFetchActions(ACTION_TYPES.CREATE_MOVIE);
-export const deleteMovie = createFetchActions(ACTION_TYPES.DELETE_MOVIE);
+// export const uploadMovies = createFetchActions(ACTION_TYPES.UPLOAD_MOVIES);
+
 //COMMON
 export const saveSearchWord = createAction(ACTION_TYPES.SAVE_SEARCH_WORD);
-export const setRedirectTo = createAction(ACTION_TYPES.SET_REDIRECT_TO);
 export const clearError = createAction(ACTION_TYPES.CLEAR_ERROR);
 export const clearStatus = createAction(ACTION_TYPES.CLEAR_STATUS);
-export const clearRedirectTo = createAction(ACTION_TYPES.CLEAR_REDIRECT_TO);

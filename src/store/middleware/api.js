@@ -7,7 +7,7 @@ const constructUrl = (url, query) => (query ? `${url}/${query}` : url);
 export const api = ({ dispatch }) => (next) => (action) => {
   if (action.type === API_REQUEST) {
     const { method, data, url, query, onSuccess, onError } = action.meta;
-    
+
     client({
       method,
       url: constructUrl(url, query),
@@ -17,7 +17,11 @@ export const api = ({ dispatch }) => (next) => (action) => {
         dispatch({ type: onSuccess, payload: response.data });
       })
       .catch((error) => {
-        dispatch({ type: onError, payload: error });
+        const errorMessage = error?.response ? error.response.data : error;
+
+        console.log('errorMessage', errorMessage);
+
+        dispatch({ type: onError, payload: errorMessage });
       });
   }
 

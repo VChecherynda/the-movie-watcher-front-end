@@ -1,3 +1,4 @@
 export default {
-  spinner: false
+  spinner: false,
+  redirectTo: ""
 };

@@ -2,8 +2,6 @@ import { createSelector } from "reselect";
 
 import { filterEntetiesByWords } from "@helpers/filter";
 
-export const selectRedirectTo = state => state.movies.redirectTo;
-
 export const selectMovies = state => state.movies.entities;
 
 export const selectPagination = state => state.movies.pagination;

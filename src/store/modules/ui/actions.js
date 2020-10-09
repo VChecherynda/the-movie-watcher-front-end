@@ -4,13 +4,13 @@ export const apiRequest = ({
   method,
   url,
   query,
-  body,
+  data,
   onSuccess,
   onError,
 }) => ({
   type: ACTION_TYPES.API_REQUEST,
-  payload: body,
-  meta: { method, url, query, body, onSuccess, onError },
+  payload: data,
+  meta: { method, url, query, data, onSuccess, onError },
 });
 
 export const showSpinner = () => ({
@@ -21,4 +21,9 @@ export const showSpinner = () => ({
 export const hideSpinner = () => ({
   type: ACTION_TYPES.HIDE_SPINNER,
   payload: false,
+});
+
+export const redirectTo = (path) => ({
+  type: ACTION_TYPES.REDIRECT_TO,
+  payload: path,
 });

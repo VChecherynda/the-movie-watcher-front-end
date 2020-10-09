@@ -38,6 +38,7 @@ module.exports = {
       "@validations": path.resolve(__dirname, "src/validations"),
       "@configs": path.resolve(__dirname, "src/configs"),
       "@views": path.resolve(__dirname, "src/views"),
+      "@router": path.resolve(__dirname, "src/router"),
       "@store": path.resolve(__dirname, "src/store"),
       "@helpers": path.resolve(__dirname, "src/helpers"),
       "@hooks": path.resolve(__dirname, "src/hooks"),

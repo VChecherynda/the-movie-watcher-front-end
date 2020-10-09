@@ -10,16 +10,12 @@ import {
   selectPagination,
 } from "@store/modules/movies/selectors";
 
-import useRedirect from "@hooks/useRedirect";
-
 import View from "./view";
 
 const useHooks = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const currentPage = params?.page || 1;
-
-  useRedirect();
 
   const searchedWord = useSelector(selectSearchWord);
   const filteredMovies = useSelector(selectFilteredMovies);

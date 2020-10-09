@@ -1,8 +1,11 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import { createMovie } from "@store/modules/movies/middleware";
-import { clearStatus, clearRedirectTo } from "@store/modules/movies/actions";
+import {
+  movieCreate,
+  clearStatus,
+  clearRedirectTo,
+} from "@store/modules/movies/actions";
 
 import useRedirect from "@hooks/useRedirect";
 
@@ -21,8 +24,8 @@ const useHooks = () => {
   }, [dispatch]);
 
   const handleCreate = useCallback(
-    payload => {
-      dispatch(createMovie(payload));
+    (payload) => {
+      dispatch(movieCreate(payload));
     },
     [dispatch]
   );

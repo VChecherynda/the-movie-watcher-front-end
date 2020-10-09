@@ -22,7 +22,7 @@ export const getMovieCurrent = ({ dispatch }) => (next) => (action) => {
     dispatch(
       apiRequest({
         method: "GET",
-        body: null,
+        data: null,
         url: "movies/find-one",
         query: action.payload,
         onSuccess: FETCH_MOVIE_CURRENT_SUCCESS,

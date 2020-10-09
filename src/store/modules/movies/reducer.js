@@ -1,7 +1,9 @@
 import {
   SAVE_SEARCH_WORD,
-  CREATE_MOVIE,
-  DELETE_MOVIE,
+  MOVIE_CREATE_RESPONSE,
+  MOVIE_CREATE_ERROR,
+  MOVIE_DELETE_RESPONSE,
+  MOVIE_DELETE_ERROR,
   MOVIES_RESPONSE,
   MOVIES_ERROR,
   MOVIE_CURRENT_RESPONSE,
@@ -48,31 +50,12 @@ function saveCurrentMovie(state, action) {
 }
 
 function saveMovieAfterCreate(state, action) {
-  const stateFulfilled = fulfilled(state);
   const newEntities = state.entities.concat(action.payload);
 
   return {
-    ...stateFulfilled,
+    ...state,
     entities: newEntities,
-    redirectTo: "movies/1",
-  };
-}
-
-function saveMoviesAfterDelete(state, action) {
-  const stateFulfilled = fulfilled(state);
-  const filteredEntities = state.entities.filter(
-    (entity) => entity.id !== action.payload.id
-  );
-
-  const redirectTo =
-    filteredEntities.length === 0
-      ? `movies/${state.pagination?.prevPage}`
-      : `movies/${state.pagination?.currentPage}`;
-
-  return {
-    ...stateFulfilled,
-    entities: filteredEntities,
-    redirectTo,
+    error: "",
   };
 }
 
@@ -109,35 +92,39 @@ function movieReducer(state = initialState, action) {
       return saveMovies(state, action);
 
     case MOVIES_ERROR:
-      return rejected(state, action);
+      return { ...state, error: action?.payload };
 
     // Fetch Current Movie
     case MOVIE_CURRENT_RESPONSE:
       return saveCurrentMovie(state, action);
 
     case MOVIE_CURRENT_ERROR:
-      return rejected(state, action);
+      return { ...state, error: action?.payload };
 
     // Create Movie
-    case CREATE_MOVIE.SUCCESS:
-      return saveMovieAfterCreate(state, action);
+    case MOVIE_CREATE_RESPONSE:
+      return { ...state };
 
-    case CREATE_MOVIE.ERROR:
-      return rejected(state, action);
+    case MOVIE_CREATE_ERROR:
+      return { ...state, error: action?.payload };
 
     // Delete Movie
-    case DELETE_MOVIE.SUCCESS:
-      return saveMoviesAfterDelete(state, action);
+    case MOVIE_DELETE_RESPONSE:
+      return {
+        ...state,
+        entities: action.payload,
+        error: "",
+      };
 
-    case DELETE_MOVIE.ERROR:
-      return rejected(state, action);
+    case MOVIE_DELETE_ERROR:
+      return { ...state, error: action?.payload };
 
     // Upload Movies
-    case UPLOAD_MOVIES.SUCCESS:
-      return saveMoviesAfterUpload(state, action);
+    // case UPLOAD_MOVIES.SUCCESS:
+    //   return saveMoviesAfterUpload(state, action);
 
-    case UPLOAD_MOVIES.ERROR:
-      return rejected(state, action);
+    // case UPLOAD_MOVIES.ERROR:
+    //   return rejected(state, action);
 
     default:
       return state;

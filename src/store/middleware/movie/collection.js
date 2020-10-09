@@ -19,7 +19,7 @@ export const getMoviesCollection = ({ dispatch }) => (next) => (action) => {
     dispatch(
       apiRequest({
         method: "GET",
-        body: null,
+        data: null,
         url: "movies/find",
         query: action.payload,
         onSuccess: FETCH_MOVIES_SUCCESS,

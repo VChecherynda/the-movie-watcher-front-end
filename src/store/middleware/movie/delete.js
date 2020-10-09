@@ -8,9 +8,11 @@ import {
   apiRequest,
   showSpinner,
   hideSpinner,
+  redirectTo,
 } from "@store/modules/ui/actions";
 
 import {
+  fetchMovies,
   movieDeleteResponse,
   movieDeleteError,
 } from "@store/modules/movies/actions";
@@ -22,7 +24,7 @@ export const deleteMovie = ({ dispatch }) => (next) => (action) => {
     dispatch(
       apiRequest({
         method: "DELETE",
-        body: null,
+        data: null,
         url: "movies/delete",
         query: action.payload,
         onSuccess: FETCH_MOVIE_DELETE_SUCCESS,
@@ -34,12 +36,27 @@ export const deleteMovie = ({ dispatch }) => (next) => (action) => {
   }
 };
 
-export const processMovieDelete = ({ dispatch }) => (next) => (action) => {
+export const processMovieDelete = ({ dispatch, getState }) => (next) => (
+  action
+) => {
   next(action);
 
   if (action.type === FETCH_MOVIE_DELETE_SUCCESS) {
-    dispatch(movieDeleteResponse(action.payload));
-    dispatch(hideSpinner());
+    const { entities = [], pagination = {} } = getState().movies;
+    const { prevPage = 1, currentPage = 1 } = pagination;
+
+    const filteredEntities = entities.filter(
+      (entity) => entity.id !== action.payload.id
+    );
+
+    const isEmptyEntities = filteredEntities.length === 0;
+    const page = isEmptyEntities ? prevPage : currentPage;
+    const pagePath = `movies/${page}`;
+
+    dispatch(movieDeleteResponse(filteredEntities));
+    dispatch(showSpinner());
+    dispatch(redirectTo(pagePath));
+    // dispatch(fetchMovies(page));
   }
 
   if (action.type === FETCH_MOVIE_DELETE_ERROR) {

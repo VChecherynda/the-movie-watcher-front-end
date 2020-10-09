@@ -38,11 +38,15 @@ export const MOVIE_DELETE_ERROR = "[movie-delete] error";
 
 // MOVIE CREATE
 
-export const CREATE_MOVIE = makeFetchingTypes("createMovie");
+export const FETCH_MOVIE_CREATE = "[movie-create] fetch";
 
-export const DELETE_MOVIE = makeFetchingTypes("deleteMovie");
+export const FETCH_MOVIE_CREATE_SUCCESS = "[movie-create] fetch success";
 
-export const UPLOAD_MOVIES = makeFetchingTypes("uploadMovies");
+export const FETCH_MOVIE_CREATE_ERROR = "[movie-create] fetch error";
+
+export const MOVIE_CREATE_RESPONSE = "[movie-create] response";
+
+export const MOVIE_CREATE_ERROR = "[movie-create] error";
 
 // COMMON
 export const SAVE_SEARCH_WORD = "saveSearchWord";

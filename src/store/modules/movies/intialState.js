@@ -4,6 +4,5 @@ export default {
   entities: [],
   pagination: {},
   current: {},
-  redirectTo: "",
   error: ""
 };
