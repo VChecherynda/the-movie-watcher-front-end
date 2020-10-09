@@ -1,6 +1,6 @@
 import * as ACTION_TYPES from "./types";
 
-import { createFetchActions, createAction } from "@helpers/actions";
+import {  createAction } from "@helpers/actions";
 
 // COLLECTION
 export const fetchMovies = (page) => ({
