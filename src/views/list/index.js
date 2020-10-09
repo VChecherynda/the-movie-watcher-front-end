@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { clearStatus, clearRedirectTo } from "@store/modules/movies/actions";
-import { fetchMovies } from "@store/modules/movies/middleware";
+import { fetchMovies } from "@store/modules/movies/actions";
 import {
   selectSearchWord,
   selectFilteredMovies,

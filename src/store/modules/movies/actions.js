@@ -3,7 +3,21 @@ import * as ACTION_TYPES from "./types";
 import { createFetchActions, createAction } from "@helpers/actions";
 
 //FETCH
-export const fetchMovies = createFetchActions(ACTION_TYPES.FETCH_MOVIES);
+export const fetchMovies = (page) => ({
+  type: ACTION_TYPES.FETCH_MOVIES,
+  payload: page,
+});
+
+export const moviesResponse = (action) => ({
+  type: ACTION_TYPES.MOVIES_RESPONSE,
+  payload: action.payload,
+});
+
+export const moviesError = (action) => ({
+  type: ACTION_TYPES.MOVIES_RESPONSE,
+  payload: action.payload,
+});
+
 export const fetchMovieCurrent = createFetchActions(
   ACTION_TYPES.FETCH_MOVIE_CURRENT
 );

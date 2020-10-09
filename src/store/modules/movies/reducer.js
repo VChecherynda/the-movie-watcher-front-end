@@ -3,7 +3,8 @@ import {
   SET_REDIRECT_TO,
   CREATE_MOVIE,
   DELETE_MOVIE,
-  FETCH_MOVIES,
+  MOVIES_RESPONSE,
+  MOVIES_ERROR,
   FETCH_MOVIE_CURRENT,
   UPLOAD_MOVIES,
   CLEAR_ERROR,
@@ -132,14 +133,11 @@ function movieReducer(state = initialState, action) {
         redirectTo: "",
       };
 
-    // Fetch Movies
-    case FETCH_MOVIES.PENDING:
-      return pending(state);
-
-    case FETCH_MOVIES.SUCCESS:
+    // Movies
+    case MOVIES_RESPONSE:
       return saveMovies(state, action);
 
-    case FETCH_MOVIES.ERROR:
+    case MOVIES_ERROR:
       return rejected(state, action);
 
     // Fetch Current Movie

@@ -1,7 +1,18 @@
 import { makeFetchingTypes } from '@helpers/types';
 
 // FETCHING
-export const FETCH_MOVIES = makeFetchingTypes("fetchMovies");
+export const FETCH_MOVIES = "[movies] fetch";
+
+export const FETCH_MOVIES_SUCCESS = "[movies] fetch success";
+
+export const FETCH_MOVIES_ERROR = "[movies] fetch error";
+
+export const MOVIES_RESPONSE = "[movies] response";
+
+export const MOVIES_ERROR = "[movies] error";
+
+
+export const UPDATE_MOVIES = makeFetchingTypes("[movies] update");
 
 export const FETCH_MOVIE_CURRENT = makeFetchingTypes("fetchMovieCurrent");
 
